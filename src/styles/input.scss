@@ -1,0 +1,32 @@
+@use './variables.scss';
+
+.input {
+    @include column ();
+
+    label {
+        color: $label-color;
+        font-size: 12px;
+        font-weight: $light;
+        text-align: left;
+    }
+
+    input, .input__field {
+        font-size: 14px;
+        color: $text-color; 
+        border-bottom: 1px solid $fill-color;
+        padding-top: 2px;
+        padding-bottom: 3px;
+    
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+    }
+
+    .__error {
+        color: $error-color;
+        font-size: 12px;
+    }
+}
+
+

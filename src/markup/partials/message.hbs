@@ -1,0 +1,12 @@
+<div class="message message--{{ position }} message--{{ status }}">
+    <div class="message__content">
+        {{#if image}}
+            <img src="/static/img/{{ image }}" >
+        {{/if}}
+
+        {{#if text}}
+            {{ text }}
+        {{/if}}
+    </div>
+    <div class="message__time">{{ time }}</div>
+</div>

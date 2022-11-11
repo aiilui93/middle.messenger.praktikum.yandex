@@ -1,0 +1,144 @@
+---
+attachments: 
+  - 
+    action: add_photo_alternate
+    title: "Фото или Видео"
+  - 
+    action: upload_file
+    title: Файл
+  - 
+    action: location_on
+    title: Локация
+chat_group: 
+  - 
+    date: "19 июня"
+    messages: 
+      - 
+        position: left
+        status: read
+        text: |-
+            Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. 
+             Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+        time: "11:56"
+      - 
+        image: photo.png
+        position: left
+        status: read
+        time: "11:59"
+      - 
+        position: right
+        status: read
+        text: Круто!
+        time: "11:59"
+  - 
+    date: "20 июня"
+    messages: 
+      - 
+        position: left
+        status: read
+        text: |-
+            Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. 
+             Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+        time: "11:56"
+      - 
+        image: photo.png
+        status: read
+        position: left
+        time: "11:59"
+      - 
+        position: right
+        status: unread
+        text: Круто!
+        time: "11:59"
+chats: 
+  - 
+    author: Вы
+    avatar: ""
+    last_message: Изображение
+    name: "Владимир Ильич"
+    time: "10:49"
+    unread: "2"
+  - 
+    avatar: ""
+    last_message: Мяу
+    name: "Моя кошка"
+    time: "12:00"
+  - 
+    avatar: ""
+    last_message: "Друзья, у меня для вас особенный выпуск новостей!..."
+    name: Илья
+    time: "15:12"
+    unread: "4"
+  - 
+    author: Вы
+    avatar: ""
+    last_message: Круто!
+    name: Вадим
+    time: Пт
+  - 
+    avatar: ""
+    last_message: "И Human Interface Guidelines и Material Design рекомендуют..."
+    name: тет-а-теты
+    time: Ср
+  - 
+    avatar: ""
+    last_message: "Миллионы россиян ежедневно проводят десятки часов свое..."
+    name: "1, 2, 3"
+    time: Пн
+  - 
+    avatar: ""
+    last_message: "В 2008 году художник Jon Rafman  начал собирать..."
+    name: "Design Destroyer"
+    time: Пн
+  - 
+    avatar: ""
+    last_message: "В 2008 году художник Jon Rafman  начал собирать..."
+    name: Day.
+    time: Пн
+  - 
+    avatar: ""
+    last_message: "А я чё? Оно само не полетело! Я, кстати, новую песню записал..."
+    name: "Дмитрий Рогозин"
+    time: "12 Апр 2022"
+  - 
+    avatar: ""
+    last_message: "Он такой, а я такая, а он мне..."
+    name: Ленка
+    time: "12 Апр 2022"
+  - 
+    author: Вы
+    avatar: ""
+    last_message: Пирожочки!
+    name: Мама
+    time: "11 Апр 2022"
+class: blue
+profile: Профиль
+profile_link: /src/pages/settings/index.hbs
+title: Чат
+user_actions: 
+  - 
+    action: person_add
+    title: "Добавить пользователя"
+  - 
+    action: person_remove
+    title: "Удалить пользователя"
+---
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="../../styles/styles.scss">
+        <script src="./index.js" type="module"></script>
+    </head>
+    <body>
+        <main class="app {{ class }}">
+            <aside>
+                {{>feed profile=profile profile_link=profile_link chats=chats}}
+            </aside>
+            <article>
+                {{>chat user_actions=user_actions attachments=attachments chat_group=chat_group}}
+            </article>
+        </main>
+    </body>
+</html>  

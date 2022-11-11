@@ -1,0 +1,38 @@
+<div class="feed">
+    <div class="feed__header">
+        <div class="feed__links">
+            <a href="{{ profile_link }}">{{ profile }} <span class="icon material-symbols-outlined">arrow_forward_ios</span> </a>
+        </div>
+        
+        {{>search name="Поиск"}}
+    </div>
+    <div class="feed__body">
+        {{#each chats}}
+            <div class="feed__item">
+                <div class="feed__image">
+                    {{#if this.image}}
+                        <img src="{{ this.image }}" />
+                    {{/if}}
+                </div>
+                <div class="feed__content">
+                    <div class="feed__info">
+                        <div class="feed__name">{{ this.name }}</div>
+                        <div class="feed__time">{{ this.time }}</div>
+                    </div>
+                    
+                    <div class="feed__text">
+                        <div class="text">
+                            {{#if this.author}}
+                                <b>{{ this.author }}:</b>
+                            {{/if}}
+                            {{ this.last_message }}
+                        </div>
+                        {{#if this.unread}}
+                            <div class="feed__unread">{{ this.unread }}</div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div> 

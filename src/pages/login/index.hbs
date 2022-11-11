@@ -1,0 +1,32 @@
+---
+title: "Вход"
+class: "login"
+fields:
+  - name: "login"
+    label: "Логин"
+    type: "text"
+    required: "true"
+    id: "name"
+  - name: "password"
+    label: "Пароль"
+    type: "password"
+    required: "true"
+    id: "password"
+send: "Войти"
+url: "/src/pages/signup/index.hbs"
+anchor: "Нет аккаунта?"
+---
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="../../styles/styles.scss">
+        <script src="../index.js" type="module"></script>
+    </head>
+    <body>
+        <main class="app">
+            {{>form class=class fields=fields send=send title=title url=url anchor=anchor}}
+        </main>
+    </body>
+</html>  
