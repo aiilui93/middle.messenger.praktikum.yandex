@@ -22,13 +22,13 @@
 
 ## Потрогать в интернете
 
-[Netlify]()
+[Netlify](https://messenger-aiilui93.netlify.app/)
 
 ## Список страниц
 
-* [Авторизация]()
-* [Регистрация]()
-* [Список чатов и лента переписки]()
-* [Настройки пользователя]()
-* [Страница 404]()
-* [Страница 500]()
+* [Авторизация](https://messenger-aiilui93.netlify.app/login/index.html)
+* [Регистрация](https://messenger-aiilui93.netlify.app/signup/index.html)
+* [Список чатов и лента переписки](https://messenger-aiilui93.netlify.app/chat/index.html)
+* [Настройки пользователя](https://messenger-aiilui93.netlify.app/settings/index.html)
+* [Страница 404](https://messenger-aiilui93.netlify.app/404/index.html)
+* [Страница 500](https://messenger-aiilui93.netlify.app/500/index.html)
