@@ -21,16 +21,8 @@
         margin-bottom: 20px;
     }
 
-    &__data {
-        opacity: 5;
-    }
-
     &__nav {
         margin-top: 55px;
-    }
-
-    .form__row {
-        opacity: 7;
     }
 
     .button-text {
@@ -40,18 +32,6 @@
         padding: 7px 0;
         font-weight: $medium;
         font-size: 15px;
-    }
-
-    .change-data {
-        opacity: 9;
-    }
-
-    .change-password {
-        opacity: 10;
-    }
-
-    .password {
-        opacity: 11;
     }
 
     .input {
@@ -86,7 +66,6 @@
     }
 
     .data {
-        opacity: 15;
 
         .profile__save {
             display: none;
