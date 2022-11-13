@@ -7,8 +7,8 @@ const personalSave = personalData.querySelector('.profile__save');
 const changePassword = document.querySelector('.change-password');
 const passSave = document.querySelector('.password__save');
 
-let isTabs = profileData && passwordData;
-let isTabsBtn = personalData && personalNav && personalSave;
+const isTabs = profileData && passwordData;
+const isTabsBtn = personalData && personalNav && personalSave;
 
 changeData.addEventListener('click', () => {
     if (isTabsBtn) {
