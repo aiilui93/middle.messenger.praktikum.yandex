@@ -1,0 +1,68 @@
+<a class="app__back" href="/src/pages/chat/index.hbs">
+    <span class="icon button button-icon material-symbols-outlined">arrow_back_ios</span>
+</a>
+
+<div class="profile">
+
+    <div class="data">
+
+        {{>avatar}}
+
+        <div class="profile__title">{{ name }}</div>
+
+        <form class="profile__data user disabled" action="/">
+            {{#each fields}}
+                <div class="form__row">
+                    {{>input input=this}}
+                </div>
+            {{/each}}
+            {{>button name=send class='profile__save'}}
+        </form>
+
+        {{>profile-nav}}
+        
+    </div>
+
+    <div class="password hidden">
+
+        {{>avatar}}
+
+         <form class="profile__data password" action="/">
+         
+            <div class="form__row">
+                <div class="input">
+                    <label for="oldPassword">Старый пароль</label>
+                    <input class="input__field" id="oldPassword" name="oldPassword" type="password" required value="12345678"/>
+                </div>
+            </div>
+            <div class="form__row">
+                <div class="input">
+                    <label for="newPassword">Новый пароль</label>
+                    <input class="input__field" id="newPassword" name="newPassword" type="password" required value="12345678qwe"/>
+                </div>
+            </div>
+            <div class="form__row">
+                <div class="input">
+                    <label for="oldPassword">Повторите новый пароль</label>
+                    <input class="input__field" id="newPassword-repeat" name="newPassword-repeat" type="password" required value="12345678qwe"/>
+                </div>
+            </div>
+
+            {{>button name=send class='password__save'}}
+        </form>
+    </div>
+
+</div>
+
+
+<div id="change-avatar" class="popup">
+    <div class="popup__content">
+        <div class="popup__title">Загрузите файл</div>
+        <form action="#">
+            <input type="file" name="avatar" id="avatar">
+            <label for="avatar">Выбрать файл на компьютере</label>
+            <button class="button save-button">Поменять</button>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap');
+@import './reset.scss';
+@import './variables.scss';
+@import './form.scss';
+@import './input.scss';
+@import './chat.scss';
+@import './dropdown.scss';
+@import './profile.scss';
+@import './popup.scss';
+@import './error.scss';
+
+html,
+body {
+    @include covered ();
+}
+
+body * {
+    font-family: $font, sans-serif;
+}
+
+body {
+    color: $text-color;
+    font-weight: $regular;
+    font-size: 14px;
+}
+
+
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: $fill-color $aside-color;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+    background: $aside-color;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $fill-color;
+    border-radius: 10px;
+    border: none;
+}
+
+.app {
+    @include covered ();
+    @include centered ();
+
+    &__back {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 64px;
+        background: $aside-color;
+        border-right: 1px solid $fill-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+            font-size: 15px;
+            padding: 9px 2px 9px 7px;
+        }
+
+        &:hover {
+            background: darken($aside-color, 5%);
+
+            .icon {
+                background-color: lighten($primary-color, 10%);
+            }
+        }
+    
+       
+    }
+
+    aside {
+        flex-basis: 310px;
+        min-width: 310px;
+    }
+
+    article {
+        flex-basis: calc(100% - 310px);
+    }
+}
+
+a, .link {
+    color: $primary-color;
+    
+    &:hover {
+        color: lighten($primary-color, 20%);
+    }
+}
+
+button,
+.button {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: $primary-color;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+    color: $white-color;
+
+    &:hover {
+        background-color: lighten($primary-color, 20%);
+    }
+}
+
+.button-round {
+    border-radius: 10px;
+}
+
+.button-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0;
+    border-radius: 50%;
+    padding: 8px;
+
+    &::before, span {
+        content: '';
+        font-size: 18px;
+    }
+}
+
+.hidden {
+    display: none !important
+}
+
+.button-red {
+    color: $error-color !important;
+    background-color: transparent;
+    padding: 0;
+}
+
+.icon {
+    font-size: 12px;
+    line-height: 1
+}
+

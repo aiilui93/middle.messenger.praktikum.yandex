@@ -1,0 +1,19 @@
+<div class="input">
+    {{#if input.label }}
+      <label for="{{ input.id }}">{{ input.label }}</label>
+    {{/if}}
+    <input class="input__field"
+        id="{{ input.id }}" 
+        name="{{ input.name }}" 
+        type="{{ input.type }}"
+
+        {{#if input.required}}
+        required
+        {{/if}}
+
+        {{#if input.value}}
+          value="{{ value }}"
+        {{/if}}
+        
+    />
+</div>
