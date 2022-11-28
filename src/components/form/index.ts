@@ -1,7 +1,8 @@
 import Block from '../../utils/Block/Block';
 import template from './form.tmpl';
+import '../../styles/form.scss';
 
-class Form extends Block {
+class Form extends Block<Record<string, unknown>> {
     constructor(props: Record<string, unknown>) {
         super('div', 'form', props); 
     }

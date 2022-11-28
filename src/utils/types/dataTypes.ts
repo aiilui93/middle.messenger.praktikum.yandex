@@ -4,6 +4,7 @@ export interface FieldInputs {
     type: string;
     required?: 'true';
     id?: string;
+    value?: string;
     events?: Record<string, () => void>
 };
 
@@ -25,4 +26,8 @@ export interface ChatListData {
     name: string;
     time: string;
     unread?: number
+};
+
+export type LayoutProps = {
+    children?: object[];
 };

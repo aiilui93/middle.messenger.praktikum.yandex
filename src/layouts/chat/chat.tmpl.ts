@@ -8,11 +8,9 @@ const temp: any = `<div class="chat">
     {{{ user_actions }}}
 </div>
 <div class="chat__body">
-   
     <div class="chat__group">
         {{{ messages }}}
     </div>
-    
 </div>
 <div class="chat__add">
     {{{ attachments }}}
@@ -25,7 +23,5 @@ const temp: any = `<div class="chat">
 </div>
 
 </div>` as string;
-
-//{{>message position=this.position content=this.content type=this.type time=this.time}}
 
 export default temp;

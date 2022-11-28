@@ -14,7 +14,7 @@ const props = {
   const proxyProps = new Proxy(props, {
       get(target, prop) {
         if (prop.startsWith('_')) {
-            throw new Error("Нет прав");
+            throw new Error('Нет прав');
         } else {
           let val = target[prop];
           if (typeof val === 'function') {
@@ -26,7 +26,7 @@ const props = {
       },
       set(target, prop, val) {
         if (prop.startsWith('_')) {
-            throw new Error("Нет прав");
+            throw new Error('Нет прав');
         } else {
           target[prop] = val;
           return true;
@@ -34,7 +34,7 @@ const props = {
       },
       deleteProperty(target, prop) {
         if (prop.startsWith('_')) {
-          throw new Error("Нет прав");
+          throw new Error('Нет прав');
         } else {
           delete target[prop];
           return true;
@@ -57,7 +57,7 @@ const props = {
   try {
       delete proxyProps._privateProp;
   } catch (error) {
-      console.log(error); // Error: Нет прав
+      console.log(error);
   }
   
 

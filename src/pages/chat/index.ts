@@ -4,6 +4,7 @@ import { messages, chatData} from './data';
 import { ChatPage, ChatContent, ChatFeed } from '../../layouts/chat';
 import Dropdown from '../../components/dropdown';
 import Message from '../../components/message';
+import '../../styles/chat.scss';
 
 const messageItems = createInstances(messages, Message);
 

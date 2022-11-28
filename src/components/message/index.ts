@@ -1,5 +1,5 @@
-import Block from "../../utils/Block/Block";
-import template from "./message.tmpl";
+import Block from '../../utils/Block/Block';
+import template from './message.tmpl';
 
 type MessageProps = {
     image?: string,
@@ -13,7 +13,7 @@ type MessageProps = {
 
 export default class Message extends Block<MessageProps> {
     constructor(props: MessageProps) {
-        super("div", "", props);
+        super('div', '', props);
         this.props.timeText = ` ${props.time.getHours()}:${props.time.getMinutes()}`;
     }
 

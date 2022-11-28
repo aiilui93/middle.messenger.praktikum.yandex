@@ -1,8 +1,8 @@
-import Block from "../../utils/Block/Block";
+import Block from '../../utils/Block/Block';
 import chatTpl from './chat.tmpl'
 import feedTpl from './feed.tmpl'
-import pageTpl from './chatPage.tmpl'
-
+import page from './chatPage.tmpl'
+import { LayoutProps } from '../../utils/types/dataTypes'
 
 type ChatFeedProps = {
     chats?: object[];
@@ -14,7 +14,6 @@ type ChatFeedProps = {
       click: () => void;
     };
 }
-
 
 type ChatContentProps = {
     attachments?: Record<string, any>;
@@ -28,14 +27,9 @@ type ChatContentProps = {
     };
 }
 
-type ChatPageProps = {
-    children?: object[];
-}
-
-
 export class ChatFeed extends Block<ChatFeedProps> {
     constructor(props: ChatFeedProps) {
-      super("aside", "", props);
+      super('aside', '', props);
     }
 
     render() {
@@ -45,7 +39,7 @@ export class ChatFeed extends Block<ChatFeedProps> {
 
 export class ChatContent extends Block<ChatContentProps> {
     constructor(props: ChatContentProps) {
-      super("article", "", props);
+      super('article', '', props);
     }
 
     render() {
@@ -53,12 +47,12 @@ export class ChatContent extends Block<ChatContentProps> {
     }
 }
 
-export class ChatPage extends Block<ChatPageProps> {
-    constructor(props: ChatPageProps) {
-      super("div", "app", props);
+export class ChatPage extends Block<LayoutProps> {
+    constructor(props: LayoutProps) {
+      super('div', 'app', props);
     }
 
     render() {
-        return this.compile(pageTpl,  { ...this.props});
+        return this.compile(page,  { ...this.props});
     }
 }

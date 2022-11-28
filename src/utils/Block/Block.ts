@@ -1,5 +1,5 @@
-import { EventBus } from '../EventBus/EventBus';
 import Handlebars from 'handlebars';
+import { EventBus } from '../EventBus/EventBus';
 import {v4 as makeUUID} from 'uuid';
 
 type BlockEvents<P = any> = {
@@ -140,7 +140,6 @@ class Block<P extends Record<string, unknown> = any> {
         }
 
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-        //this._render();
     }
 
     componentDidUpdate(oldProps: Props<P>, newProps: Props<P>) {

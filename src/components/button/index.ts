@@ -1,17 +1,17 @@
-import Block from "../../utils/Block/Block";
-import template from "./button.tmpl";
+import Block from '../../utils/Block/Block';
+import template from './button.tmpl'
 
 type ButtonProps = {
     name: string;
     class?: string;
     events?: {
-      click: () => void;
+        click: (e: any) => void;
     };
 }
 
 export default class Button extends Block<ButtonProps> {
     constructor(props: ButtonProps) {
-        super("div", "button__wrapper", props);
+        super('div', 'button__wrapper', props);
     }
 
     render() {

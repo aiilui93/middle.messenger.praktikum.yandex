@@ -1,11 +1,12 @@
 import Block from '../../utils/Block/Block';
 import template from './dropdown.tmpl';
+import '../../styles/dropdown.scss';
 
 type DropdownProps = {
     class?: string;
     items: Record<string, string>[];
     events?: {
-      click: (e: object) => void;
+        click: (e: object) => void;
     };
 }
 
@@ -15,6 +16,7 @@ export default class Dropdown extends Block<DropdownProps> {
             {
                 ...props,
                 events: {
+                    //любой инстанс класса dropdown в любом случае имеет такое поведение при клике
                     click: (e: Record<string, any>) => {
 
                         const dropdown = e.target.closest('.dropdown');
@@ -22,9 +24,8 @@ export default class Dropdown extends Block<DropdownProps> {
                         if (dropdown) {
                             const content = dropdown.querySelector('.dropdown__content');
                             const itemPos = dropdown.getBoundingClientRect().top;
-                
                             content.classList.toggle('show');
-                    
+
                             const contentHeight: number = content.clientHeight;
                             const offset: number = itemPos + contentHeight;
                     

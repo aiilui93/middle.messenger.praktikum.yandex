@@ -1,5 +1,6 @@
-import Block from "../../utils/Block/Block";
-import template from "./input.tmpl";
+import Block from '../../utils/Block/Block';
+import template from './input.tmpl';
+import '../../styles/input.scss';
 
 type InputProps = {
     name: string,
@@ -14,7 +15,7 @@ type InputProps = {
 
 export default class Input extends Block<InputProps> {
     constructor(props: InputProps) {
-      super("div", "form__row", props);
+      super('div', 'form__row', props);
     }
 
     render() {

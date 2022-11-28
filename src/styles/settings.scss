@@ -1,5 +1,4 @@
-@use './variables.scss';
-
+@import './styles.scss';
 
 .profile {
     width: 530px;
@@ -21,13 +20,28 @@
         margin-bottom: 20px;
     }
 
+    .button__wrapper {
+        margin-top: 50px
+    }
+
     &__nav {
-        margin-top: 55px;
+        margin-top: 0;
+
+        .button__wrapper {
+            margin-top: 0;
+            justify-content: flex-start;
+
+            .button {
+                width: auto;
+                float: left;
+                margin-left: 0;
+            }
+        }
     }
 
     .button-text {
         color: $primary-color;
-        background: 0 0;
+        background: transparent !important;
         justify-content: flex-start;
         padding: 7px 0;
         font-weight: $medium;
@@ -64,18 +78,39 @@
             color: $label-color
         }
     }
-
-    .data {
-
-        .profile__save {
-            display: none;
-        }
-    }
     
     .button {
         max-width: 300px;
-        margin: 50px auto 0;
+        margin: 0 auto
     }
+}
+.app__back {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 64px;
+    background: $aside-color;
+    border-right: 1px solid $fill-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+        font-size: 15px;
+        padding: 9px 2px 9px 7px;
+        @include centered()
+    }
+
+    &:hover {
+        background: darken($aside-color, 5%);
+
+        .icon {
+            background-color: lighten($primary-color, 10%);
+        }
+    }
+
+   
 }
 
 .disabled {

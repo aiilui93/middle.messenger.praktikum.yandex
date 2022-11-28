@@ -4,6 +4,8 @@ import renderPage from '../../utils/render/renderPage'
 import Button from '../../components/button';
 import Input from '../../components/input';
 import FormData from './data';
+import '../../styles/styles.scss';
+import '../../styles/form.scss';
 
 const inputs = createInstances(FormData, Input);
 
@@ -18,7 +20,7 @@ const signupForm = new Form({
         class: "send",
         events: {
             click: () => {
-                console.log('кликнули')
+                window.location.href = '/pages/chat/index.html'
             }
         },
     })
