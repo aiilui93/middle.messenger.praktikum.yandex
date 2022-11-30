@@ -17,6 +17,9 @@ const temp: any = `<div class="input">
         {{/if}}
         
     />
+
+    <span class="input__error {{ show_error }} ">{{ error }}</span>
+
 </div>` as string;
 
 export default temp;

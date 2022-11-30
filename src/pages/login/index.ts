@@ -1,4 +1,3 @@
-import renderPage from '../../utils/render/renderPage';
 import createInstances from '../../utils/helpers/createInstances';
 import Form from '../../components/form/index';
 import Button from '../../components/button/index';
@@ -8,20 +7,23 @@ import '../../styles/styles.scss';
 import '../../styles/form.scss';
 
 
-const inputs = createInstances(FormData, Input);
+const inputs: Record<string, object> = createInstances(FormData, Input);
 
 const loginForm = new Form({ 
     send: 'Войти',
     title: 'Вход',
-    url: '/pages/signup/index.html',
+    name: 'login',
+    url: '/signup',
+    redirect: '/chat',
     anchor: 'Нет аккаунта?',
     inputs: inputs,
     button: new Button({
         name: 'Войти',
         class: 'send',
         events: {
-            click: () => {
-                window.location.href = '/pages/chat/index.html'
+            click: (e: Event) => {
+                e.preventDefault();
+                loginForm.submitForm(inputs);
             }
         },
     }),
@@ -29,7 +31,3 @@ const loginForm = new Form({
 });
 
 export default loginForm;
-
-window.addEventListener('DOMContentLoaded', () => {
-    renderPage(loginForm);
-});

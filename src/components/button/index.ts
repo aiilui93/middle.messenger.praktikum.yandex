@@ -4,6 +4,7 @@ import template from './button.tmpl'
 type ButtonProps = {
     name: string;
     class?: string;
+    icon?: string;
     events?: {
         click: (e: any) => void;
     };

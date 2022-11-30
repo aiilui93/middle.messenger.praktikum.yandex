@@ -6,7 +6,7 @@ type DropdownProps = {
     class?: string;
     items: Record<string, string>[];
     events?: {
-        click: (e: object) => void;
+        click: (e: Event) => void;
     };
 }
 

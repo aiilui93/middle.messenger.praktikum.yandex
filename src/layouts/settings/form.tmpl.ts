@@ -9,9 +9,9 @@ const temp: any = `<div class="profile">
         
     <div class="data">
 
-        <div class="profile__title">{{ name }}</div>
-
-        <form class="profile__data user disabled" action="/">
+        <form class="profile__data user disabled" 
+        name="{{#if nameProfileForm }}{{ name }}{{/if}}" 
+        action="/">
 
             {{{ fields_data }}}
 
@@ -41,7 +41,9 @@ const temp: any = `<div class="profile">
 
     <div class="password hidden">
 
-         <form class="profile__data password" action="/">
+         <form class="profile__data password" 
+         name="{{#if namePassForm }}{{ name }}{{/if}}"
+          action="/">
 
             {{{ fields_password }}}
 
@@ -54,6 +56,7 @@ const temp: any = `<div class="profile">
             {{{ button_password }}}
 
         </form>
+
     </div>
 
 </div>` as string;

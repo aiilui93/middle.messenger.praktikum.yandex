@@ -14,12 +14,12 @@ const temp: any = `<div class="chat">
 </div>
 <div class="chat__add">
     {{{ attachments }}}
+    
     <form action="#" name="new-message" class="new-message" method="post">
-        <textarea name="message" class="new-message__field" id="message"></textarea>
-        <button class="button button-round button-icon new-message__send">
-            <span class="icon material-symbols-outlined">send</span>
-        </button>
+        {{{ textarea }}}
+        {{{ button }}}
     </form>
+
 </div>
 
 </div>` as string;

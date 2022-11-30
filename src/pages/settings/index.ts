@@ -1,8 +1,7 @@
-import renderPage from '../../utils/render/renderPage';
 import createInstances from '../../utils/helpers/createInstances';
-import { SettingsForm } from '../../layouts/settings';
 import { SettingsPage } from '../../layouts/settings';
 import { Popup } from '../../layouts/settings';
+import settingsFormTpl from '../../layouts/settings/form.tmpl'
 import Form from '../../components/form';
 import Button from '../../components/button/index';
 import Input from '../../components/input/index';
@@ -10,8 +9,8 @@ import FormData from './data';
 import '../../styles/settings.scss';
 import '../../styles/popup.scss';
 
-const inputs_data: Record<string, object> = createInstances(FormData.data, Input);
-const inputs_password: Record<string, object> = createInstances(FormData.password, Input);
+const inputs_data: Record<string, object> = createInstances(FormData.data.reverse(), Input);
+const inputs_password: Record<string, object> = createInstances(FormData.password.reverse(), Input);
 
 const buttonData = new Button({
     name: 'Сохранить',
@@ -19,14 +18,16 @@ const buttonData = new Button({
     events: {
         click: (e) => {
             e.preventDefault();
-            const parent = e.target.closest('.data');
-            const profile = parent.querySelector('.profile__data');
-            const nav = parent.querySelector('.profile__nav');
-
-            buttonData.hide();
-
-            profile.classList.add('disabled');
-            nav.style.display = 'block';
+            if (settingsForm.submitForm(inputs_data)) {
+                const parent = e.target.closest('.data');
+                const profile = parent.querySelector('.profile__data');
+                const nav = parent.querySelector('.profile__nav');
+    
+                buttonData.hide();
+    
+                profile.classList.add('disabled');
+                nav.style.display = 'block';
+            }
         }
     },
 });
@@ -39,22 +40,28 @@ const buttonPassword = new Button({
     events: {
         click: (e) => {
             e.preventDefault();
-            const parent = e.target.closest('.profile');
-            const data = parent.querySelector('.data');
-            const psw = parent.querySelector('.password');
-            const nav = parent.querySelector('.profile__nav');
+            if (settingsForm.submitForm(inputs_password)) {
+                const parent = e.target.closest('.profile');
+                const data = parent.querySelector('.data');
+                const psw = parent.querySelector('.password');
+                const nav = parent.querySelector('.profile__nav');
 
-            data.classList.remove('hidden');
-            psw.classList.add('hidden');
-            nav.style.display = 'block';
+                data.classList.remove('hidden');
+                psw.classList.add('hidden');
+                nav.style.display = 'block';
+            }
         }
     },
 });
 
-const settingsForm = new SettingsForm({ 
+const settingsForm = new Form({ 
     title: 'Настройки',
     class: 'settings',
     send: 'Сохранить',
+    name: 'dataForm',
+    nameProfileForm: 'true',
+    redirect: '/settings',
+    template: settingsFormTpl,
     fields_data: inputs_data,
     fields_password: inputs_password,
     link_buttons: {
@@ -63,7 +70,7 @@ const settingsForm = new SettingsForm({
             class: 'button-text button-red',
             events: {
                 click: () => {
-                    window.location.href = '/pages/login/index.html'
+                    window.location.href = '/login'
                 }
             },
         }),
@@ -72,14 +79,17 @@ const settingsForm = new SettingsForm({
             class: 'button-text change-password',
             events: {
                 click: (e) => {
+                    settingsForm.setProps({namePassForm: 'true', nameProfileForm: ''})
+
                     const parent = e.target.closest('.profile');
                     const data = parent.querySelector('.data');
                     const psw = parent.querySelector('.password');
                     const nav = parent.querySelector('.profile__nav');
-
+        
                     data.classList.add('hidden');
                     psw.classList.remove('hidden');
                     nav.style.display = 'none';
+                    
                 }
             }
         }),
@@ -88,6 +98,8 @@ const settingsForm = new SettingsForm({
             class: 'button-text change-data',
             events: {
                 click: (e) => {
+                    settingsForm.setProps({namePassForm: '', nameProfileForm: 'true'})
+
                     const parent = e.target.closest('.data');
                     const profile = parent.querySelector('.profile__data');
                     const nav = parent.querySelector('.profile__nav');
@@ -124,12 +136,7 @@ const settingsPopup = new Popup({
                 label: 'Выбрать файл на компьютере',
                 type: 'file',
                 required: 'true',
-                id: 'avatar',
-                events: {
-                    blur: () => {
-                        console.log('on blur')
-                    }
-                }
+                id: 'avatar'
             })
         }
     })
@@ -139,6 +146,4 @@ const settingsPage = new SettingsPage({
     children: [settingsForm, settingsPopup]
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-    renderPage(settingsPage);
-});
+export default settingsPage;

@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel src/index.html src/pages/**/index.html --no-cache --open",
-    "start": "rm -rf dist && parcel build src/index.html src/pages/**/index.html --no-cache && npm run server ",
-    "build": "rm -rf dist && parcel build src/index.html src/pages/**/index.html --no-cache",
-    "server": "node server.js"
+    "dev": "parcel ./index.html --no-cache --open",
+    "start": "rm -rf dist && parcel build ./index.html --no-cache && npm run server ",
+    "build": "rm -rf dist && parcel build ./index.html --no-cache",
+    "server": "node server.js",
+    "lint:ts": "node_modules/.bin/eslint .",
+    "lint:css": "npx stylelint **/*.scss"
   },
   "staticFiles": {
     "staticPath": "static/",
@@ -16,10 +18,16 @@
   "author": "aiilui",
   "license": "ISC",
   "devDependencies": {
-    "@types/uuid": "^8.3.4",
+    "@types/uuid": "8.3.4",
+    "eslint": "8.28.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "parcel": "2.7.0",
+    "parcel-reporter-static-files-copy": "1.4.0",
     "sass": "1.56.0",
-    "typed-scss-modules": "^7.0.1",
-    "typescript": "^4.9.3"
+    "stylelint": "14.15.0",
+    "stylelint-config-standard-scss": "6.1.0",
+    "typed-scss-modules": "7.0.1",
+    "typescript": "4.9.3"
   },
   "dependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
@@ -27,8 +35,6 @@
     "@parcel/transformer-sass": "2.7.0",
     "express": "4.18.2",
     "handlebars": "4.7.7",
-    "parcel": "2.7.0",
-    "parcel-reporter-static-files-copy": "^1.4.0",
     "uuid": "^9.0.0"
   },
   "engines": {

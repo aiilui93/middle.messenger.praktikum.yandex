@@ -1,12 +1,19 @@
+
+export type ObjectLiteral = Record<string, any>;
+
 export interface FieldInputs {
-    name: string;
-    label: string;
-    type: string;
-    required?: 'true';
-    id?: string;
-    value?: string;
-    events?: Record<string, () => void>
-};
+    name: string,
+    label: string,
+    type: string,
+    required: string,
+    id?: string,
+    validate_rule?: string,
+    value?: string,
+    events?: {
+        focusin: (e: Event) => void;
+        focusout: (e: Event) => void;
+    };
+}
 
 export interface MessagesData {
     name: string,

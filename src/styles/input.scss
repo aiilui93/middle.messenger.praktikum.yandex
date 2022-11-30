@@ -1,7 +1,7 @@
-@import './variables.scss';
+@import "./variables";
 
 .input {
-    @include column ();
+    @include column;
 
     label {
         color: $label-color;
@@ -10,23 +10,28 @@
         text-align: left;
     }
 
-    input, .input__field {
+    input,
+    .input__field {
         font-size: 14px;
-        color: $text-color; 
+        color: $text-color;
         border-bottom: 1px solid $fill-color;
         padding-top: 2px;
         padding-bottom: 3px;
-    
+
         &:focus,
         &:focus-visible {
-          outline: none;
+            outline: none;
         }
     }
 
-    .__error {
+    &__error {
         color: $error-color;
-        font-size: 12px;
+        font-size: 13px;
+        margin-top: 4px;
+        display: none;
+
+        &.show {
+            display: inline-block;
+        }
     }
 }
-
-

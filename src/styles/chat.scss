@@ -1,11 +1,13 @@
-@import './styles.scss';
+@import "./styles";
 
 .feed {
-    @include fixed-height ();
+    @include fixed-height;
+
     background: $aside-color;
 
     &__header {
-        @include sticky ();
+        @include sticky;
+
         top: 0;
         padding: 15px 10px;
         background: $aside-color;
@@ -26,7 +28,7 @@
             gap: 5px;
 
             span {
-                font-size: 12px
+                font-size: 12px;
             }
         }
     }
@@ -38,9 +40,10 @@
         display: flex;
         gap: 10px;
         cursor: pointer;
+        transition: 0.3s;
 
         &:hover {
-            background-color: darken($aside-color, 2%);
+            background-color: $white-color;
         }
     }
 
@@ -53,9 +56,10 @@
     }
 
     &__content {
+        @include column;
+
         flex-grow: 1;
         font-size: 13px;
-        @include column ();
     }
 
     &__name {
@@ -71,13 +75,12 @@
         flex-grow: 1;
 
         .text {
-            flex-grow: 1
+            flex-grow: 1;
         }
 
         b {
             font-weight: $bold;
         }
-
     }
 
     &__info {
@@ -106,7 +109,6 @@
 }
 
 .search {
-
     &__inner {
         margin-top: 20px;
 
@@ -117,22 +119,23 @@
             padding: 7px;
             border-radius: 5px;
         }
-
     }
 }
 
 .chat {
-    @include fixed-height ();
-    @include column ();
+    @include fixed-height;
+    @include column;
+
     padding: 0 20px;
 
     &__header {
-        @include sticky ();
+        @include sticky;
+
         top: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 0px;
+        padding: 15px 0;
         border-bottom: 1px solid $fill-color;
         margin-bottom: 20px;
         background: $white-color;
@@ -159,7 +162,8 @@
     }
 
     &__body {
-        @include column ();
+        @include column;
+
         flex-grow: 1;
     }
 
@@ -171,7 +175,8 @@
     }
 
     &__add {
-        @include sticky ();
+        @include sticky;
+
         bottom: 0;
         z-index: 100;
         background: $white-color;
@@ -183,10 +188,9 @@
         justify-content: space-between;
         gap: 12px;
     }
-    
 }
 
-.message {
+%message {
     padding: 12px 20px 18px;
     background: $aside-color;
     border-radius: 10px;
@@ -195,16 +199,37 @@
     max-width: 50%;
     clear: both;
     min-width: 145px;
+}
+
+.message {
+    @extend %message;
 
     &--left {
-        @extend .message;
+        @extend %message;
+
         float: left;
     }
 
     &--right {
-        @extend .message;
+        @extend %message;
+
         float: right;
         background: $message-color;
+    }
+
+    &__time {
+        color: $label-color;
+        font-size: 11px;
+        float: right;
+        position: absolute;
+        bottom: 6px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+
+        &::after {
+            @include icon ("\e5ca");
+        }
     }
 
     &--read:not(.message--left) {
@@ -212,7 +237,8 @@
             color: $primary-color;
 
             &::before {
-                @include icon ('\e5ca');
+                @include icon ("\e5ca");
+
                 position: absolute;
                 z-index: 0;
                 right: -5px;
@@ -229,21 +255,6 @@
         font-weight: $medium;
         line-height: 1.4;
     }
-
-    &__time {
-        color: $label-color;
-        font-size: 11px;
-        float: right;
-        position: absolute;
-        bottom: 6px;
-        right: 10px;
-        display: flex;
-        align-items: center;
-
-        &::after {
-            @include icon ('\e5ca');
-        }
-    }
 }
 
 .new-message {
@@ -252,8 +263,24 @@
     justify-content: space-between;
     gap: 12px;
 
-    &__field {
+    .textarea {
         flex-grow: 1;
+        position: relative;
+
+        .input__error {
+            position: absolute;
+            left: 0;
+            top: -40px;
+            box-shadow: 1px 1px 11px #00000024;
+            padding: 6px 20px;
+            border-radius: 18px;
+            font-size: 12px;
+            background: $error-color;
+            color: white;
+        }
+    }
+
+    &__field {
         background: $fill-color;
         border-radius: 30px;
         max-height: 34px;
@@ -264,4 +291,3 @@
         overflow: hidden;
     }
 }
-

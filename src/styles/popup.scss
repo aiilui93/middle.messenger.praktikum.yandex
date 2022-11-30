@@ -1,15 +1,15 @@
-
 .popup {
     display: none;
 
     &__content {
         padding: 10px;
     }
+
     &__title {
         font-size: 18px;
     }
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.233);
+    background: rgb(0 0 0 / 23.3%);
 }

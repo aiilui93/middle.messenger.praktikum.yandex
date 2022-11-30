@@ -152,6 +152,7 @@ class Block<P extends Record<string, unknown> = any> {
         }
 
         Object.assign(this.props, nextProps);
+        
     };
 
     get element() {

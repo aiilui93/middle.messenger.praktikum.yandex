@@ -1,5 +1,4 @@
 import Content from "../../components/content";
-import renderPage from "../../utils/render/renderPage";
 import '../../styles/error.scss';
 
 const page404 = new Content({
@@ -7,7 +6,5 @@ const page404 = new Content({
     description: 'Не туда попали'
 })
 
-window.addEventListener('DOMContentLoaded', () => {
-    renderPage(page404);
-});
+export default page404;
 

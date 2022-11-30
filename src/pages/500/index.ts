@@ -1,5 +1,4 @@
 import Content from "../../components/content";
-import renderPage from "../../utils/render/renderPage";
 import '../../styles/error.scss';
 
 const page500 = new Content({
@@ -7,7 +6,5 @@ const page500 = new Content({
     description: 'Мы уже фиксим'
 })
 
-window.addEventListener('DOMContentLoaded', () => {
-    renderPage(page500);
-});
+export default page500;
 

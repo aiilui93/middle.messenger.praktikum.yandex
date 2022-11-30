@@ -1,31 +1,27 @@
 import createInstances from '../../utils/helpers/createInstances';
 import Form from '../../components/form';
-import renderPage from '../../utils/render/renderPage'
 import Button from '../../components/button';
 import Input from '../../components/input';
 import FormData from './data';
 import '../../styles/styles.scss';
 import '../../styles/form.scss';
 
-const inputs = createInstances(FormData, Input);
+const inputs = createInstances(FormData.reverse(), Input);
 
 const signupForm = new Form({ 
-    send: 'Зарегистрироваться',
     title: 'Регистрация',
-    url: '/pages/login/index.html',
+    url: '/login',
     anchor: 'Войти',
     inputs: inputs,
     button: new Button({
-        name: "Войти",
-        class: "send",
+        name: 'Зарегистрироваться',
+        class: 'send',
         events: {
             click: () => {
-                window.location.href = '/pages/chat/index.html'
+                window.location.href = '/chat'
             }
         },
     })
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-    renderPage(signupForm);
-});
+export default signupForm;

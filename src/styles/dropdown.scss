@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import "./variables";
 
 .dropdown {
     position: relative;
@@ -15,7 +15,7 @@
     &__content {
         display: none;
         background: $white-color;
-        box-shadow: 0px 0px 6px rgb(0 0 0 / 14%);
+        box-shadow: 0 0 6px rgb(0 0 0 / 14%);
         border-radius: 12px;
         flex-direction: column;
         overflow: hidden;
@@ -54,13 +54,12 @@
         }
 
         &:hover {
-            color: lighten($primary-color, 10%);
+            color: $primary-color-hover;
             background-color: transparent;
 
             .icon {
-                color: lighten($primary-color, 10%);
+                color: $primary-color-hover;
             }
         }
-    } 
+    }
 }
-

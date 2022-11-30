@@ -3,6 +3,8 @@ import chatTpl from './chat.tmpl'
 import feedTpl from './feed.tmpl'
 import page from './chatPage.tmpl'
 import { LayoutProps } from '../../utils/types/dataTypes'
+import Textarea from '../../components/textarea';
+import Button from '../../components/button';
 
 type ChatFeedProps = {
     chats?: object[];
@@ -19,6 +21,8 @@ type ChatContentProps = {
     attachments?: Record<string, any>;
     user_actions?: Record<string, any>;
     messages?: Record<string, unknown>;
+    textarea?: Textarea;
+    button?: Button;
     profile?: string;
     profile_link?: string;
     title?: string;
