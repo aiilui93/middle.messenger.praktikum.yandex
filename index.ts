@@ -6,43 +6,40 @@ import chatPage from './src/pages/chat';
 import page404 from './src/pages/404';
 import page500 from './src/pages/500';
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    const pathname = document.location.pathname; // текущий url
+document.addEventListener('DOMContentLoaded', () => {
+    const { pathname } = document.location; // текущий url
 
     switch (pathname) {
+    case '/':
+        renderPage(loginForm);
+        break;
 
-        case "/":
-            renderPage(loginForm);
-            break;
+    case '/login':
+        renderPage(loginForm);
+        break;
 
-        case '/login':
-            renderPage(loginForm);
-            break;
+    case '/signup':
+        renderPage(signupForm);
+        break;
 
-        case '/signup':
-            renderPage(signupForm);
-            break;
+    case '/settings':
+        renderPage(settingsPage);
+        break;
 
-        case '/settings':
-            renderPage(settingsPage);
-            break;
+    case '/chat':
+        renderPage(chatPage);
+        break;
 
-        case '/chat':
-            renderPage(chatPage);
-            break;
+    case '/500':
+        renderPage(page500);
+        break;
 
-        case '/500':
-            renderPage(page500);
-            break;
+    case '/404':
+        renderPage(page404);
+        break;
 
-        case '/404':
-            renderPage(page404);
-            break;
-    
-        default:
-            renderPage(page404);
-            break;
+    default:
+        renderPage(page404);
+        break;
     }
-
 });

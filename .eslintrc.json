@@ -1,3 +1,20 @@
 {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+        "linebreak-style": ["error", "windows"],
+        "max-len": [1, 100],
+        "max-params": [2, 3],
+        "indent": [2, 4],
+
+        "no-unused-vars": 2,
+
+        "import/extensions": [1, "never"],
+        "import/no-unresolved": "off"
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"]
 }

@@ -6,5 +6,4 @@ export default function renderPage(page: ObjectLiteral): void {
     if (target) {
         target.append(page.getContent());
     }
-
 }
