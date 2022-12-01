@@ -1,11 +1,11 @@
 import Block from '../../utils/Block/Block';
-import template from './form.tmpl';
-import '../../styles/form.scss';
+import template from './form';
 import Input from '../input';
+import '../../styles/form.scss';
 
 class Form extends Block<Record<string, unknown>> {
     constructor(props: Record<string, unknown>) {
-        super('div', 'app', props); 
+        super('div', 'app', props);
     }
 
     showData() {
@@ -13,32 +13,32 @@ class Form extends Block<Record<string, unknown>> {
         const name: any = this.props.name as string;
         const formData: any = new FormData(document.forms[name] as HTMLFormElement);
 
+        /* eslint-disable-next-line */
         for (let input of formData.entries() ) {
-            values[input[0]] = input[1]
+            values[input[0]] = input[1];
         }
 
-        //выводим данные формы в консоль
-        console.log(values)
+        // выводим данные формы в консоль
+        console.log(values);
     }
 
     submitForm(inputs: Record<string, object>) {
-
         let isValid = true;
-        Object.values(inputs).forEach( (item: any) => {
+        Object.values(inputs).forEach((item: any) => {
             if (item instanceof Input) {
                 if (isValid) {
                     if (!item.validate()) {
                         isValid = false;
-                    } 
+                    }
                 }
-            } 
-        })
+            }
+        });
 
         if (isValid) {
-            this.showData()
-            //раньше тут был переход в чат, сейчас выводим данные формы в консоль, затем попадаем в чат
+            this.showData();
+            // раньше тут был переход в чат, сейчас выводим данные формы в консоль, затем попадаем в чат
             setTimeout(() => {
-                window.location.href = this.props.redirect as string
+                window.location.href = this.props.redirect as string;
             }, 2000);
         }
 
@@ -46,7 +46,7 @@ class Form extends Block<Record<string, unknown>> {
     }
 
     render() {
-        return this.compile(this.props.template || template, this.props)
+        return this.compile(this.props.template || template, this.props);
     }
 }
 

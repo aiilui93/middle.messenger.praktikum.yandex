@@ -5,4 +5,3 @@ const temp: any = `<a class="app__back" href="/chat">
 {{{ children }}}` as string;
 
 export default temp;
-

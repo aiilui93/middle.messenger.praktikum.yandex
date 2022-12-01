@@ -9,6 +9,6 @@ const temp: any = `
     </div>
     <a class="link" href="/pages/chat/index.html">Назад к чатам</a>
 </div>
-`;
+` as string;
 
 export default temp;

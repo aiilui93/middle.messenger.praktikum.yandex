@@ -12,6 +12,13 @@
 - parcel
 - express
 - sass
+- eslint
+- stylelint
+
+## Линтеры
+
+- ESLint
+- Stylelint
 
 ## Команды
 
@@ -19,6 +26,8 @@
 - `npm run build` — сборка проекта
 - `npm run server` — запуск сервера на 3000 порту
 - `npm run dev` — команда для разработки
+- `npm run lint:ts` — запуск ESLint
+- `npm run lint:css` — запуск Stylelint
 
 ## Потрогать в интернете
 
@@ -26,9 +35,9 @@
 
 ## Список страниц
 
-* [Авторизация](https://messenger-aiilui93.netlify.app/login/index.html)
-* [Регистрация](https://messenger-aiilui93.netlify.app/signup/index.html)
-* [Список чатов и лента переписки](https://messenger-aiilui93.netlify.app/chat/index.html)
-* [Настройки пользователя](https://messenger-aiilui93.netlify.app/settings/index.html)
-* [Страница 404](https://messenger-aiilui93.netlify.app/404/index.html)
-* [Страница 500](https://messenger-aiilui93.netlify.app/500/index.html)
+* [Авторизация](https://messenger-aiilui93.netlify.app/login)
+* [Регистрация](https://messenger-aiilui93.netlify.app/signup)
+* [Список чатов и лента переписки](https://messenger-aiilui93.netlify.app/chat)
+* [Настройки пользователя](https://messenger-aiilui93.netlify.app/settings)
+* [Страница 404](https://messenger-aiilui93.netlify.app/404)
+* [Страница 500](https://messenger-aiilui93.netlify.app/500)

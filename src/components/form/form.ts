@@ -7,7 +7,6 @@ const temp: any = `
         {{{ button }}}
         <a class="link form__link" href={{ url }}>{{ anchor }}</a>
     </form>
-</div>
-`;
+</div>` as string;
 
 export default temp;

@@ -1,7 +1,7 @@
 import createInstances from '../../utils/helpers/createInstances';
-import { SettingsPage } from '../../layouts/settings';
-import { Popup } from '../../layouts/settings';
-import settingsFormTpl from '../../layouts/settings/form.tmpl'
+import SettingsPage from '../../layouts/settings';
+import Popup from '../../layouts/settings/popup';
+import settingsFormTpl from '../../layouts/settings/formTemplate';
 import Form from '../../components/form';
 import Button from '../../components/button/index';
 import Input from '../../components/input/index';
@@ -9,8 +9,8 @@ import FormData from './data';
 import '../../styles/settings.scss';
 import '../../styles/popup.scss';
 
-const inputs_data: Record<string, object> = createInstances(FormData.data.reverse(), Input);
-const inputs_password: Record<string, object> = createInstances(FormData.password.reverse(), Input);
+const inputsData: Record<string, object> = createInstances(FormData.data.reverse(), Input);
+const inputsPassword: Record<string, object> = createInstances(FormData.password.reverse(), Input);
 
 const buttonData = new Button({
     name: 'Сохранить',
@@ -18,17 +18,17 @@ const buttonData = new Button({
     events: {
         click: (e) => {
             e.preventDefault();
-            if (settingsForm.submitForm(inputs_data)) {
+            if (settingsForm.submitForm(inputsData)) {
                 const parent = e.target.closest('.data');
                 const profile = parent.querySelector('.profile__data');
                 const nav = parent.querySelector('.profile__nav');
-    
+
                 buttonData.hide();
-    
+
                 profile.classList.add('disabled');
                 nav.style.display = 'block';
             }
-        }
+        },
     },
 });
 
@@ -40,7 +40,7 @@ const buttonPassword = new Button({
     events: {
         click: (e) => {
             e.preventDefault();
-            if (settingsForm.submitForm(inputs_password)) {
+            if (settingsForm.submitForm(inputsPassword)) {
                 const parent = e.target.closest('.profile');
                 const data = parent.querySelector('.data');
                 const psw = parent.querySelector('.password');
@@ -50,11 +50,11 @@ const buttonPassword = new Button({
                 psw.classList.add('hidden');
                 nav.style.display = 'block';
             }
-        }
+        },
     },
 });
 
-const settingsForm = new Form({ 
+const settingsForm = new Form({
     title: 'Настройки',
     class: 'settings',
     send: 'Сохранить',
@@ -62,16 +62,16 @@ const settingsForm = new Form({
     nameProfileForm: 'true',
     redirect: '/settings',
     template: settingsFormTpl,
-    fields_data: inputs_data,
-    fields_password: inputs_password,
+    fields_data: inputsData,
+    fields_password: inputsPassword,
     link_buttons: {
         btn_logout: new Button({
             name: 'Выйти',
             class: 'button-text button-red',
             events: {
                 click: () => {
-                    window.location.href = '/login'
-                }
+                    window.location.href = '/login';
+                },
             },
         }),
         btn_pass: new Button({
@@ -79,26 +79,25 @@ const settingsForm = new Form({
             class: 'button-text change-password',
             events: {
                 click: (e) => {
-                    settingsForm.setProps({namePassForm: 'true', nameProfileForm: ''})
+                    settingsForm.setProps({ namePassForm: 'true', nameProfileForm: '' });
 
                     const parent = e.target.closest('.profile');
                     const data = parent.querySelector('.data');
                     const psw = parent.querySelector('.password');
                     const nav = parent.querySelector('.profile__nav');
-        
+
                     data.classList.add('hidden');
                     psw.classList.remove('hidden');
                     nav.style.display = 'none';
-                    
-                }
-            }
+                },
+            },
         }),
         btn_data: new Button({
             name: 'Изменить данные',
             class: 'button-text change-data',
             events: {
                 click: (e) => {
-                    settingsForm.setProps({namePassForm: '', nameProfileForm: 'true'})
+                    settingsForm.setProps({ namePassForm: '', nameProfileForm: 'true' });
 
                     const parent = e.target.closest('.data');
                     const profile = parent.querySelector('.profile__data');
@@ -108,42 +107,37 @@ const settingsForm = new Form({
 
                     profile.classList.remove('disabled');
                     nav.style.display = 'none';
-                }
-            }
-        }), 
+                },
+            },
+        }),
     },
     button_data: buttonData,
-    button_password: buttonPassword
+    button_password: buttonPassword,
 });
 
-const settingsPopup = new Popup({ 
+const settingsPopup = new Popup({
     title: 'Загрузите файл',
     id: 'avatar',
     opened: false,
     content: new Form({
         children: {
             button: new Button({
-                name: "Поменять",
-                class: "save-button",
-                events: {
-                    click: () => {
-                        console.log('Грузим аватарку')
-                    }
-                }
+                name: 'Поменять',
+                class: 'save-button',
             }),
             input: new Input({
                 name: 'avatar',
                 label: 'Выбрать файл на компьютере',
                 type: 'file',
                 required: 'true',
-                id: 'avatar'
-            })
-        }
-    })
+                id: 'avatar',
+            }),
+        },
+    }),
 });
 
-const settingsPage = new SettingsPage({ 
-    children: [settingsForm, settingsPopup]
+const settingsPage = new SettingsPage({
+    children: [settingsForm, settingsPopup],
 });
 
 export default settingsPage;

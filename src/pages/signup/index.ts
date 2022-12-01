@@ -8,20 +8,20 @@ import '../../styles/form.scss';
 
 const inputs = createInstances(FormData.reverse(), Input);
 
-const signupForm = new Form({ 
+const signupForm = new Form({
     title: 'Регистрация',
     url: '/login',
     anchor: 'Войти',
-    inputs: inputs,
+    inputs,
     button: new Button({
         name: 'Зарегистрироваться',
         class: 'send',
         events: {
             click: () => {
-                window.location.href = '/chat'
-            }
+                window.location.href = '/chat';
+            },
         },
-    })
+    }),
 });
 
 export default signupForm;

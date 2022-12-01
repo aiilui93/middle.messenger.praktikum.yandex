@@ -1,4 +1,3 @@
-
 export type ObjectLiteral = Record<string, any>;
 
 export interface FieldInputs {
@@ -24,7 +23,7 @@ export interface MessagesData {
     text?: string,
     time: Date,
     timeText?: string
-};
+}
 
 export interface ChatListData {
     author?: string;
@@ -33,7 +32,7 @@ export interface ChatListData {
     name: string;
     time: string;
     unread?: number
-};
+}
 
 export type LayoutProps = {
     children?: object[];

@@ -1,29 +1,30 @@
 import createInstances from '../../utils/helpers/createInstances';
-import { messages, chatData} from './data';
-import { ChatPage, ChatContent, ChatFeed } from '../../layouts/chat';
+import { messages, chatData } from './data';
+import ChatPage from '../../layouts/chat';
+import ChatFeed from '../../layouts/chat/feed';
+import ChatContent from '../../layouts/chat/chat';
 import Dropdown from '../../components/dropdown';
 import Message from '../../components/message';
-import '../../styles/chat.scss';
-import Form from '../../components/form';
 import Textarea from '../../components/textarea';
 import Button from '../../components/button';
+import '../../styles/chat.scss';
 
 const messageItems = createInstances(messages, Message);
 
-const feed = new ChatFeed({ 
+const feed = new ChatFeed({
     chats: chatData,
     profile: 'Профиль',
     profile_link: '/settings',
-    title: 'Чат'
+    title: 'Чат',
 });
 
-const chat = new ChatContent({ 
+const chat = new ChatContent({
     messages: messageItems,
     textarea: new Textarea({
         class: 'new-message__field',
         name: 'message',
         id: 'message',
-        validate_rule: 'message'
+        validate_rule: 'message',
     }),
     button: new Button({
         name: '',
@@ -32,7 +33,7 @@ const chat = new ChatContent({
         events: {
             click: (e) => {
                 e.preventDefault();
-            }
+            },
         },
     }),
     attachments: new Dropdown({
@@ -40,36 +41,35 @@ const chat = new ChatContent({
         items: [
             {
                 action: 'add_photo_alternate',
-                title: 'Фото или Видео'
+                title: 'Фото или Видео',
             },
             {
                 action: 'upload_file',
-                title: 'Файл'
+                title: 'Файл',
             },
             {
                 action: 'location_on',
-                title: 'Локация'
-            }
-        ]
+                title: 'Локация',
+            },
+        ],
     }),
     user_actions: new Dropdown({
         class: 'more_vert',
         items: [
             {
                 action: 'person_add',
-                title: 'Добавить пользователя'
+                title: 'Добавить пользователя',
             },
             {
                 action: 'person_remove',
-                title: 'Удалить пользователя'
-            }
-        ]
-    })
+                title: 'Удалить пользователя',
+            },
+        ],
+    }),
 });
 
-
-const chatPage = new ChatPage({ 
-    children: [chat, feed]
-})
+const chatPage = new ChatPage({
+    children: [chat, feed],
+});
 
 export default chatPage;

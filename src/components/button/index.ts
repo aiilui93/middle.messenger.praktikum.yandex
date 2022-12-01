@@ -1,5 +1,5 @@
 import Block from '../../utils/Block/Block';
-import template from './button.tmpl'
+import template from './button';
 
 type ButtonProps = {
     name: string;
@@ -16,8 +16,6 @@ export default class Button extends Block<ButtonProps> {
     }
 
     render() {
-        return this.compile(template, { ...this.props});
+        return this.compile(template, { ...this.props });
     }
-} 
-
-
+}

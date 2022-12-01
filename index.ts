@@ -6,6 +6,9 @@ import chatPage from './src/pages/chat';
 import page404 from './src/pages/404';
 import page500 from './src/pages/500';
 
+/* Временная реализация с импортами всех страниц, есть дубль основного файла CSS из-за такого подключения,
+** в дальнейшем с появлением роутера планируется переделать и дубли уйдут */
+
 document.addEventListener('DOMContentLoaded', () => {
     const { pathname } = document.location; // текущий url
 

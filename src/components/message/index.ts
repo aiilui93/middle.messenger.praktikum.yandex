@@ -1,5 +1,5 @@
 import Block from '../../utils/Block/Block';
-import template from './message.tmpl';
+import template from './message';
 
 type MessageProps = {
     image?: string,
@@ -18,8 +18,6 @@ export default class Message extends Block<MessageProps> {
     }
 
     render() {
-        return this.compile(template, { ...this.props});
+        return this.compile(template, { ...this.props });
     }
-} 
-
-
+}

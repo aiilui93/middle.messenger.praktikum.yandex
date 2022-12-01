@@ -9,6 +9,6 @@ const temp: any = `
             </button>
         {{/each}}
     </div>
-`;
+` as string;
 
 export default temp;
