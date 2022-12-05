@@ -1,0 +1,131 @@
+@import "./styles";
+
+.app__back {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 64px;
+    background: $aside-color;
+    border-right: 1px solid $fill-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+        @include centered;
+
+        font-size: 15px;
+        padding: 9px 2px 9px 7px;
+    }
+
+    &:hover {
+        background: $fill-color;
+
+        .icon {
+            background-color: $primary-color-hover;
+        }
+    }
+}
+
+.profile {
+    width: 530px;
+    max-width: calc(100% - 65px);
+    margin-left: 65px;
+    padding: 0 20px;
+
+    &__avatar {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        font-size: 17px;
+        font-weight: $bold;
+        margin-bottom: 20px;
+    }
+
+    .button__wrapper {
+        margin-top: 50px;
+    }
+
+    .button {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    &__nav {
+        margin-top: 0;
+
+        .button__wrapper {
+            margin-top: 0;
+            justify-content: flex-start;
+
+            .button {
+                width: auto;
+                float: left;
+                margin-left: 0;
+            }
+        }
+    }
+
+    .button-text {
+        color: $primary-color;
+        background: transparent !important;
+        justify-content: flex-start;
+        padding: 7px 0;
+        font-weight: $medium;
+        font-size: 15px;
+    }
+
+    .input {
+        flex-direction: row;
+        border-bottom: 1px solid $fill-color;
+        position: relative;
+
+        &__error {
+            position: absolute;
+            top: calc(100% - 2px);
+            right: 0;
+            font-size: 12px;
+        }
+
+        label {
+            font-size: 14px;
+            color: $black-color;
+            font-weight: $medium;
+        }
+    }
+
+    .input__field {
+        margin-left: auto;
+        border: none;
+        text-align: right;
+    }
+
+    .popup-toggle {
+        background: $fill-color;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        align-items: center;
+
+        .icon {
+            font-size: 52px;
+            opacity: 0.4;
+            color: $label-color;
+        }
+    }
+}
+
+.disabled {
+    pointer-events: none;
+
+    input {
+        pointer-events: none;
+        cursor: default;
+    }
+}

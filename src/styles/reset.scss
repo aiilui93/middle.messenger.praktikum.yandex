@@ -3,15 +3,18 @@
 *::after {
     box-sizing: border-box;
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
-a, button, input {
+a,
+button,
+input {
     text-decoration: none;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 }
 
-input, textarea {
+input,
+textarea {
     border: none;
     background-image: none;
     background-color: transparent;

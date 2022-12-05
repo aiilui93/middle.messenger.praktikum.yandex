@@ -1,29 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap');
-@import './reset.scss';
-@import './variables.scss';
-@import './form.scss';
-@import './input.scss';
-@import './chat.scss';
-@import './dropdown.scss';
-@import './profile.scss';
-@import './popup.scss';
-@import './error.scss';
-
-html,
-body {
-    @include covered ();
-}
-
-body * {
-    font-family: $font, sans-serif;
-}
-
-body {
-    color: $text-color;
-    font-weight: $regular;
-    font-size: 14px;
-}
-
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap";
+@import "./reset";
+@import "./variables";
 
 /* Firefox */
 * {
@@ -46,37 +23,25 @@ body {
     border: none;
 }
 
-.app {
-    @include covered ();
-    @include centered ();
+html,
+body {
+    @include covered;
+}
 
-    &__back {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 64px;
-        background: $aside-color;
-        border-right: 1px solid $fill-color;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+body * {
+    font-family: $font, sans-serif;
+}
 
-        .icon {
-            font-size: 15px;
-            padding: 9px 2px 9px 7px;
-        }
+body {
+    color: $text-color;
+    font-weight: $regular;
+    font-size: 14px;
+}
 
-        &:hover {
-            background: darken($aside-color, 5%);
-
-            .icon {
-                background-color: lighten($primary-color, 10%);
-            }
-        }
-    
-       
-    }
+.app,
+#app {
+    @include covered;
+    @include centered;
 
     aside {
         flex-basis: 310px;
@@ -88,16 +53,23 @@ body {
     }
 }
 
-a, .link {
+a,
+.link {
     color: $primary-color;
-    
+
     &:hover {
-        color: lighten($primary-color, 20%);
+        color: $primary-color-hover;
     }
 }
 
 button,
 .button {
+    &__wrapper {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+    }
+
     padding: 12px;
     display: flex;
     justify-content: center;
@@ -109,7 +81,7 @@ button,
     color: $white-color;
 
     &:hover {
-        background-color: lighten($primary-color, 20%);
+        background-color: $primary-color-hover;
     }
 }
 
@@ -124,14 +96,15 @@ button,
     border-radius: 50%;
     padding: 8px;
 
-    &::before, span {
-        content: '';
+    &::before,
+    span {
+        content: "";
         font-size: 18px;
     }
 }
 
 .hidden {
-    display: none !important
+    display: none !important;
 }
 
 .button-red {
@@ -142,6 +115,5 @@ button,
 
 .icon {
     font-size: 12px;
-    line-height: 1
+    line-height: 1;
 }
-
