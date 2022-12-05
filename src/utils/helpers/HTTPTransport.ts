@@ -17,19 +17,21 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
+type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<unknown>
+
 class HTTPTransport {
-    get = (url: string, options: OptionsWithoutMethod = {}) => {
+    get:HTTPMethod = (url, options = {}) => {
         const query: string = queryStringify(options.data);
         const urlWithQuery: string = `${url}${query}`;
 
         return this.request(urlWithQuery, { ...options, method: METHOD.GET }, options.timeout);
     };
 
-    post = (url: string, options: OptionsWithoutMethod = {}) => this.request(url, { ...options, method: METHOD.POST }, options.timeout);
+    post:HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHOD.POST }, options.timeout);
 
-    put = (url: string, options: OptionsWithoutMethod = {}) => this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
+    put:HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
 
-    delete = (url: string, options: OptionsWithoutMethod = {}) => this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
+    delete:HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
 
     request = (url: string, options: Options = {}, timeout = 5000) => {
         const { method, data, headers = {} } = options;
