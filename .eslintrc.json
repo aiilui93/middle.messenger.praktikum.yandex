@@ -12,6 +12,7 @@
         "no-underscore-dangle": "off",
         "no-use-before-define": "off",
         "no-param-reassign": "off",
+        "no-constructor-return": "off",
         "prefer-destructuring": "off",
         "class-methods-use-this": "off",
         "prefer-promise-reject-errors": "off",

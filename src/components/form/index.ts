@@ -2,13 +2,16 @@ import Block from '../../utils/Block/Block';
 import template from './form';
 import Input from '../input';
 import '../../styles/form.scss';
+import Router from '../../utils/Router/Router';
+import AuthController from '../../controllers/AuthController';
+import { SigninData, SignupData } from '../../utils/types/dataTypes';
 
 class Form extends Block<Record<string, unknown>> {
     constructor(props: Record<string, unknown>) {
         super('div', 'app', props);
     }
 
-    showData() {
+    sendData() {
         const values: Record<string, string> = {};
         const name: any = this.props.name as string;
         const formData: any = new FormData(document.forms[name] as HTMLFormElement);
@@ -19,7 +22,19 @@ class Form extends Block<Record<string, unknown>> {
         }
 
         // выводим данные формы в консоль
-        console.log(values);
+        const data = values as unknown;
+        console.log(data);
+
+        switch (name) {
+        case 'signup':
+            AuthController.signup(data as SignupData);
+            break;
+        case 'login':
+            AuthController.signin(data as SigninData);
+            break;
+        default:
+            break;
+        }
     }
 
     submitForm(inputs: Record<string, object>) {
@@ -35,11 +50,7 @@ class Form extends Block<Record<string, unknown>> {
         });
 
         if (isValid) {
-            this.showData();
-            // раньше тут был переход в чат, сейчас выводим данные формы в консоль, затем попадаем в чат
-            setTimeout(() => {
-                window.location.href = this.props.redirect as string;
-            }, 2000);
+            this.sendData();
         }
 
         return isValid;

@@ -246,7 +246,7 @@ class Block<P extends Record<string, unknown> = any> {
     }
 
     show() {
-        this.getContent()!.style.display = 'block';
+        this.getContent()!.style.display = 'flex';
     }
 
     hide() {

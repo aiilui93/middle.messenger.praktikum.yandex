@@ -8,6 +8,10 @@ import Input from '../../components/input/index';
 import FormData from './data';
 import '../../styles/settings.scss';
 import '../../styles/popup.scss';
+import Link from '../../components/link';
+import { Routes } from '../../utils/types/dataTypes';
+import Router from '../../utils/Router/Router';
+import AuthController from '../../controllers/AuthController';
 
 const inputsData: Record<string, object> = createInstances(FormData.data.reverse(), Input);
 const inputsPassword: Record<string, object> = createInstances(FormData.password.reverse(), Input);
@@ -70,7 +74,7 @@ const settingsForm = new Form({
             class: 'button-text button-red',
             events: {
                 click: () => {
-                    window.location.href = '/login';
+                    AuthController.logout();
                 },
             },
         }),
@@ -138,6 +142,18 @@ const settingsPopup = new Popup({
 
 const settingsPage = new SettingsPage({
     children: [settingsForm, settingsPopup],
+    link: new Link({
+        class: 'app__back',
+        symlink: Routes.Chat,
+        anchor: '',
+        icon: 'arrow_back_ios',
+        events: {
+            click: (e: Event) => {
+                e.preventDefault();
+                Router.go(Routes.Chat);
+            },
+        },
+    })
 });
 
 export default settingsPage;

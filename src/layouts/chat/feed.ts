@@ -1,10 +1,10 @@
+import Link from '../../components/link';
 import Block from '../../utils/Block/Block';
 import temp from './feedTemplate';
 
 type ChatFeedProps = {
     chats?: object[];
-    profile?: string;
-    profile_link?: string;
+    link?: unknown;
     search?: string;
     title?: string;
     events?: {

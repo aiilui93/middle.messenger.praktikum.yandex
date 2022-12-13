@@ -8,14 +8,26 @@ import Message from '../../components/message';
 import Textarea from '../../components/textarea';
 import Button from '../../components/button';
 import '../../styles/chat.scss';
+import Link from '../../components/link';
+import { Routes } from '../../utils/types/dataTypes';
+import Router from '../../utils/Router/Router';
 
 const messageItems = createInstances(messages, Message);
 
 const feed = new ChatFeed({
     chats: chatData,
-    profile: 'Профиль',
-    profile_link: '/settings',
     title: 'Чат',
+    link: new Link({
+        class: 'link',
+        symlink: Routes.Settings,
+        anchor: 'Профиль >',
+        events: {
+            click: (e: Event) => {
+                e.preventDefault();
+                Router.go(Routes.Settings);
+            },
+        },
+    }),
 });
 
 const chat = new ChatContent({

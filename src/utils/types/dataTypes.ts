@@ -1,5 +1,13 @@
 export type ObjectLiteral = Record<string, any>;
 
+export enum Routes {
+    Index = '/',
+    Login = '/login',
+    Signup = '/signup',
+    Settings = '/settings',
+    Chat = '/chat'
+}
+
 export interface FieldInputs {
     name: string,
     label: string,
@@ -36,4 +44,30 @@ export interface ChatListData {
 
 export type LayoutProps = {
     children?: object[];
+    link?: unknown;
 };
+
+export interface SigninData {
+    login: string;
+    password: string;
+}
+
+export interface SignupData {
+    first_name: string;
+    second_name: string;
+    login: string;
+    email: string;
+    password: string;
+    phone: string;
+}
+
+export interface User {
+    id: number;
+    first_name: string;
+    second_name: string;
+    login: string;
+    email: string;
+    password: string;
+    phone: string;
+    avatar: string;
+}

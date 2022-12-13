@@ -2,7 +2,7 @@
 const temp: any = `<div class="feed">
 <div class="feed__header">
     <div class="feed__links">
-        <a href="{{ profile_link }}">{{ profile }} <span class="icon material-symbols-outlined">arrow_forward_ios</span> </a>
+        {{{ link }}}
     </div>
     
     <form class="search">
