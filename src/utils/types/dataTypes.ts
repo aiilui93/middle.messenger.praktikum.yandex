@@ -16,6 +16,7 @@ export interface FieldInputs {
     id?: string,
     validate_rule?: string,
     value?: string,
+    repeater_name?: string,
     events?: {
         focusin: (e: Event) => void;
         focusout: (e: Event) => void;

@@ -83,7 +83,8 @@ const inputs: Record<string, FieldInputs[]> = {
             required: 'true',
             id: 'newPassword-repeat',
             value: '12345678qwe',
-            validate_rule: 'password',
+            validate_rule: 'repeater',
+            repeater_name: 'newPassword',
         },
     ],
 };

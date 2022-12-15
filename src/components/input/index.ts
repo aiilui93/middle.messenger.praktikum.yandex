@@ -25,7 +25,10 @@ export default class Input extends Block {
     };
 
     validate = () => {
-        const result: Record<string, any> = validateRegExp(this.element!, this.props.validate_rule);
+        console.log(this.props);
+        const result: Record<string, any> = validateRegExp(this.element!, this.props.validate_rule, this.props.repeater_name);
+
+        console.log(result);
 
         if (result.test === false) {
             this.showError(result.error, result.value);

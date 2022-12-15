@@ -55,7 +55,8 @@ const inputs: FieldInputs[] = [
         type: 'password',
         required: 'true',
         id: 'submit_password',
-        validate_rule: 'password',
+        validate_rule: 'repeater',
+        repeater_name: 'password',
     },
 ];
 
