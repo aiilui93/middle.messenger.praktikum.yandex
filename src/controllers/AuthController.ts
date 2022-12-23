@@ -11,7 +11,7 @@ class AuthController {
             await this.api.signup(data);
             await this.fetchUser();
             store.set('user.error', undefined);
-            Router.go(Routes.Settings);
+            Router.go(Routes.Chat);
         } catch (error: any) {
             store.set('user.error', error.message);
             console.error(error.message);
@@ -44,15 +44,8 @@ class AuthController {
     async fetchUser() {
         store.set('user.isLoading', true);
 
-        try {
-            const user = await this.api.read();
-            store.set('user', user);
-        } catch (error: any) {
-            store.set('user.error', error.message);
-            console.error('fetchUser error', error.message);
-        } finally {
-            store.set('user.isLoading', false);
-        }
+        const user = await this.api.read();
+        store.set('user.data', user);
     }
 }
 

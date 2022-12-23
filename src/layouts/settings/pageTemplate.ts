@@ -1,5 +1,5 @@
 // language=hbs
 const temp: any = `{{{ link }}}
-{{{ children }}}` as string;
+{{{ form }}}` as string;
 
 export default temp;

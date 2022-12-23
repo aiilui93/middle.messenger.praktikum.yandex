@@ -1,7 +1,7 @@
 import createInstances from '../../utils/helpers/createInstances';
 import SettingsPage from '../../layouts/settings';
 import Popup from '../../layouts/settings/popup';
-import settingsFormTpl from '../../layouts/settings/formTemplate';
+import profileFormTpl from '../../layouts/settings/formTemplate';
 import Form from '../../components/form';
 import Button from '../../components/button/index';
 import Input from '../../components/input/index';
@@ -12,6 +12,10 @@ import Link from '../../components/link';
 import { Routes } from '../../utils/types/dataTypes';
 import Router from '../../utils/Router/Router';
 import AuthController from '../../controllers/AuthController';
+import store from '../../utils/Store/Store';
+import ProfileForm from '../../components/profileForm';
+import UserController from '../../controllers/UserController';
+import Image from '../../components/image';
 
 const inputsData: Record<string, object> = createInstances(FormData.data.reverse(), Input);
 const inputsPassword: Record<string, object> = createInstances(FormData.password.reverse(), Input);
@@ -22,7 +26,7 @@ const buttonData = new Button({
     events: {
         click: (e) => {
             e.preventDefault();
-            if (settingsForm.submitForm(inputsData)) {
+            if (profileForm.submitForm(inputsData, 'profileForm')) {
                 const parent = e.target.closest('.data');
                 const profile = parent.querySelector('.profile__data');
                 const nav = parent.querySelector('.profile__nav');
@@ -44,7 +48,7 @@ const buttonPassword = new Button({
     events: {
         click: (e) => {
             e.preventDefault();
-            if (settingsForm.submitForm(inputsPassword)) {
+            if (profileForm.submitForm(inputsPassword, 'passForm')) {
                 const parent = e.target.closest('.profile');
                 const data = parent.querySelector('.data');
                 const psw = parent.querySelector('.password');
@@ -58,15 +62,72 @@ const buttonPassword = new Button({
     },
 });
 
-const settingsForm = new Form({
+const avatarForm = new Form({
+    name: 'avatarForm',
+    button: new Button({
+        name: 'Поменять',
+        class: 'save-button',
+        events: {
+            click: (e) => {
+                e.preventDefault(e);
+                profileForm.sendFile('avatarForm');
+                settingsPopup.setProps({ opened: false });
+            },
+        },
+    }),
+    inputs: new Input({
+        name: 'avatar',
+        label: 'Выбрать файл на компьютере',
+        type: 'file',
+        required: 'true',
+        id: 'avatar',
+    }),
+});
+
+const settingsPopup = new Popup({
+    title: 'Загрузите файл',
+    id: 'avatar',
+    opened: false,
+    closeBtn: new Button({
+        name: '',
+        icon: 'close',
+        class: 'popup__close',
+        events: {
+            click: (e) => {
+                e.preventDefault();
+                settingsPopup.setProps({ opened: false });
+            },
+        },
+    }),
+    content: avatarForm,
+});
+
+const popupButton = new Button({
+    name: '',
+    class: 'popup-toggle',
+    popup: '#avatar',
+    events: {
+        click: (e) => {
+            e.preventDefault();
+            settingsPopup.setProps({ opened: true });
+        },
+    },
+});
+
+const profileForm = new ProfileForm({
     title: 'Настройки',
     class: 'settings',
     send: 'Сохранить',
-    name: 'dataForm',
-    nameProfileForm: 'true',
+    popupBtn: popupButton,
+    avatar: new Image({
+        src: '',
+        title: 'Profile photo',
+        path: '',
+    }),
+    popup: settingsPopup,
     redirect: '/settings',
-    template: settingsFormTpl,
-    fields_data: inputsData,
+    template: profileFormTpl,
+    data: inputsData,
     fields_password: inputsPassword,
     link_buttons: {
         btn_logout: new Button({
@@ -83,8 +144,6 @@ const settingsForm = new Form({
             class: 'button-text change-password',
             events: {
                 click: (e) => {
-                    settingsForm.setProps({ namePassForm: 'true', nameProfileForm: '' });
-
                     const parent = e.target.closest('.profile');
                     const data = parent.querySelector('.data');
                     const psw = parent.querySelector('.password');
@@ -101,8 +160,6 @@ const settingsForm = new Form({
             class: 'button-text change-data',
             events: {
                 click: (e) => {
-                    settingsForm.setProps({ namePassForm: '', nameProfileForm: 'true' });
-
                     const parent = e.target.closest('.data');
                     const profile = parent.querySelector('.profile__data');
                     const nav = parent.querySelector('.profile__nav');
@@ -119,29 +176,8 @@ const settingsForm = new Form({
     button_password: buttonPassword,
 });
 
-const settingsPopup = new Popup({
-    title: 'Загрузите файл',
-    id: 'avatar',
-    opened: false,
-    content: new Form({
-        children: {
-            button: new Button({
-                name: 'Поменять',
-                class: 'save-button',
-            }),
-            input: new Input({
-                name: 'avatar',
-                label: 'Выбрать файл на компьютере',
-                type: 'file',
-                required: 'true',
-                id: 'avatar',
-            }),
-        },
-    }),
-});
-
 const settingsPage = new SettingsPage({
-    children: [settingsForm, settingsPopup],
+    form: profileForm,
     link: new Link({
         class: 'app__back',
         symlink: Routes.Chat,
@@ -153,7 +189,7 @@ const settingsPage = new SettingsPage({
                 Router.go(Routes.Chat);
             },
         },
-    })
+    }),
 });
 
 export default settingsPage;

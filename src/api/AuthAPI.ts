@@ -23,11 +23,7 @@ export default class AuthAPI extends BaseAPI {
     }
 
     public read() {
-        return this.http.get('/user')
-            .then((response) => response)
-            .catch((e) => {
-                throw new Error(e.reason);
-            });
+        return this.http.get('/user');
     }
 
     public logout() {

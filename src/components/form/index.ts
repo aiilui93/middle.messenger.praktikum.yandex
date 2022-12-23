@@ -2,11 +2,11 @@ import Block from '../../utils/Block/Block';
 import template from './form';
 import Input from '../input';
 import '../../styles/form.scss';
-import Router from '../../utils/Router/Router';
 import AuthController from '../../controllers/AuthController';
 import { SigninData, SignupData } from '../../utils/types/dataTypes';
+import withStore from '../../utils/hocs/withStore';
 
-class Form extends Block<Record<string, unknown>> {
+class FormBase extends Block<Record<string, unknown>> {
     constructor(props: Record<string, unknown>) {
         super('div', 'app', props);
     }
@@ -60,5 +60,8 @@ class Form extends Block<Record<string, unknown>> {
         return this.compile(this.props.template || template, this.props);
     }
 }
+
+const withUser = withStore((state) => ({ storeData: { ...state.user }.data }));
+const Form = withUser(FormBase);
 
 export default Form;

@@ -8,7 +8,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'email',
             required: 'true',
             id: 'email',
-            value: 'pochta@yandex.ru',
+            value: '',
             validate_rule: 'email',
         },
         {
@@ -17,7 +17,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'text',
             required: 'true',
             id: 'login',
-            value: 'ivanivanov',
+            value: '',
             validate_rule: 'login',
         },
         {
@@ -26,7 +26,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'text',
             required: 'true',
             id: 'first_name',
-            value: 'Иван',
+            value: '',
             validate_rule: 'name',
         },
         {
@@ -35,7 +35,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'text',
             required: 'true',
             id: 'second_name',
-            value: 'Иванов',
+            value: '',
             validate_rule: 'name',
         },
         {
@@ -44,7 +44,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'text',
             required: 'true',
             id: 'display_name',
-            value: 'Иванов',
+            value: '',
             validate_rule: 'name',
         },
         {
@@ -53,7 +53,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'text',
             required: 'true',
             id: 'phone',
-            value: '+79099673030',
+            value: '',
             validate_rule: 'phone',
         },
     ],
@@ -64,7 +64,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'password',
             required: 'true',
             id: 'oldPassword',
-            value: '12345678',
+            value: '',
             validate_rule: 'password',
         },
         {
@@ -73,7 +73,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'password',
             required: 'true',
             id: 'newPassword',
-            value: '12345678qwe',
+            value: '',
             validate_rule: 'password',
         },
         {
@@ -82,7 +82,7 @@ const inputs: Record<string, FieldInputs[]> = {
             type: 'password',
             required: 'true',
             id: 'newPassword-repeat',
-            value: '12345678qwe',
+            value: '',
             validate_rule: 'repeater',
             repeater_name: 'newPassword',
         },

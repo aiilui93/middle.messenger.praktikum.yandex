@@ -1,8 +1,9 @@
 import Block from '../../utils/Block/Block';
+import withStore from '../../utils/hocs/withStore';
 import { LayoutProps } from '../../utils/types/dataTypes';
 import temp from './pageTemplate';
 
-export default class SettingsPage extends Block<LayoutProps> {
+class SettingsPageBase extends Block<LayoutProps> {
     constructor(props: LayoutProps) {
         super('div', 'app', props);
     }
@@ -11,3 +12,7 @@ export default class SettingsPage extends Block<LayoutProps> {
         return this.compile(temp, { ...this.props });
     }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+const SettingsPage = withUser(SettingsPageBase);
+export default SettingsPage;

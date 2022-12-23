@@ -82,6 +82,11 @@ button,
 
     &:hover {
         background-color: $primary-color-hover;
+
+        span {
+            opacity: .9 !important;
+            color: #fff !important;
+        }
     }
 }
 

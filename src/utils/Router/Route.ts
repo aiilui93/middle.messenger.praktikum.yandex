@@ -1,5 +1,4 @@
 import renderPage from '../render/renderPage';
-import isEqual from '../helpers/isEqual';
 import { ObjectLiteral } from '../types/dataTypes';
 
 class Route {
@@ -32,7 +31,7 @@ class Route {
     }
 
     match(pathname: string) {
-        return isEqual(pathname, this._pathname);
+        return pathname === this._pathname;
     }
 
     render() {

@@ -3,21 +3,26 @@ export type Indexed<T = any> = {
   };
 
 export function merge(lhs: Indexed, rhs: Indexed): Indexed {
-    for (let p in rhs) {
-      if (!rhs.hasOwnProperty(p)) {
-        continue;
-      }
-  
-      try {
-        if (rhs[p].constructor === Object) {
-          rhs[p] = merge(lhs[p] as Indexed, rhs[p] as Indexed);
-        } else {
-          lhs[p] = rhs[p];
+    Object.keys(rhs).forEach((key) => {
+        // @ts-ignore
+        if (!rhs.hasOwnProperty(key)) {
+            return;
         }
-      } catch (e) {
-        lhs[p] = rhs[p];
-      }
-    }
+
+        try {
+            // @ts-ignore
+            if (rhs[key]!.constructor === Object) {
+                // @ts-ignore
+                if (lhs[key]!.constructor === Object) {
+                    rhs[key] = merge(lhs[key] as Indexed, rhs[key] as Indexed);
+                }
+            } else {
+                lhs[key] = rhs[key];
+            }
+        } catch (e) {
+            lhs[key] = rhs[key];
+        }
+    });
 
     return lhs;
 }

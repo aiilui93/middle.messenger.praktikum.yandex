@@ -1,11 +1,19 @@
 export type ObjectLiteral = Record<string, any>;
 
+export type PlainObject<T = any> = {
+    [k in string]: T;
+}
+
+export type Props<P extends Record<string, unknown> = any> = { events?: Record<string, (e: object) => void> } & P;
+
 export enum Routes {
     Index = '/',
     Login = '/login',
     Signup = '/signup',
     Settings = '/settings',
-    Chat = '/chat'
+    Chat = '/chat',
+    Error404 = '/404',
+    Error500 = '/500',
 }
 
 export interface FieldInputs {
@@ -63,12 +71,30 @@ export interface SignupData {
 }
 
 export interface User {
-    id: number;
+    id?: number;
     first_name: string;
     second_name: string;
+    display_name?: string;
     login: string;
     email: string;
-    password: string;
+    password?: string;
     phone: string;
+    avatar?: string;
+}
+
+export interface Password {
+    oldPassword: string;
+    newPassword: string;
+}
+
+export interface ChatInfo {
+    id: number;
+    title: string;
     avatar: string;
+    unread_count: number;
+    last_message: {
+      user: User,
+      time: string;
+      content: string;
+    }
 }

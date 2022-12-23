@@ -7,9 +7,7 @@ import page404 from './src/pages/404';
 import page500 from './src/pages/500';
 import Router from './src/utils/Router/Router';
 import { Routes } from './src/utils/types/dataTypes';
-
-/* Временная реализация с импортами всех страниц, есть дубль основного файла CSS из-за такого подключения,
-** в дальнейшем с появлением роутера планируется переделать и дубли уйдут */
+import AuthController from './src/controllers/AuthController';
 
 document.addEventListener('DOMContentLoaded', async () => {
     Router
@@ -17,7 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         .use(Routes.Login, loginForm)
         .use(Routes.Signup, signupForm)
         .use(Routes.Settings, settingsPage)
-        .use(Routes.Chat, chatPage);
+        .use(Routes.Chat, chatPage)
+        .use(Routes.Error404, page404)
+        .use(Routes.Error500, page500);
 
     let isProtectedRoute: boolean = true;
 
@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     case Routes.Index:
     case Routes.Login:
     case Routes.Signup:
+    case Routes.Error404:
+    case Routes.Error500:
         isProtectedRoute = false;
         break;
     default:
@@ -33,14 +35,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        // await AuthController.fetchUser();
+        console.log(isProtectedRoute);
+        await AuthController.fetchUser();
 
         Router.start();
 
-        /* if (!isProtectedRoute) {
+        if (!isProtectedRoute) {
             Router.go(Routes.Settings);
-        } */
-
+        }
     } catch (e) {
         Router.start();
 
@@ -48,6 +50,4 @@ document.addEventListener('DOMContentLoaded', async () => {
             Router.go(Routes.Index);
         }
     }
-
-    Router.start();
 });

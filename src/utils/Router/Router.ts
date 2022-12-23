@@ -1,3 +1,4 @@
+import { Routes } from '../types/dataTypes';
 import Route from './Route';
 
 class Router {
@@ -18,7 +19,7 @@ class Router {
     }
 
     public use(pathname: string, block: any) {
-        const route = new Route(pathname, block, { rootQuery: this.rootQuery});
+        const route = new Route(pathname, block, { rootQuery: this.rootQuery });
         this.routes.push(route);
         return this;
     }
@@ -35,10 +36,11 @@ class Router {
         const route = this.getRoute(pathname);
 
         if (!route) {
+            this.go(Routes.Error404);
             return;
         }
 
-        if (this.currentRoute) {
+        if (this.currentRoute && this.currentRoute !== route) {
             this.currentRoute.leave();
         }
 

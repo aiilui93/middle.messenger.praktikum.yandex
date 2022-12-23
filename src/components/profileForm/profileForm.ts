@@ -2,17 +2,18 @@
 const temp: any = `<div class="profile">
 
     <div class="profile__avatar">
-        <button class="popup-toggle" data-popup="#avatar">
-            <span class="icon material-symbols-outlined">image</span>
-        </button>
+        
+        {{#if avatar}}
+            {{{ avatar }}}
+        {{/if}}
+
+        {{{ popupBtn }}}
+
     </div>
         
     <div class="data">
 
-        <form class="profile__data user disabled" 
-        {{ profileForm }}
-        name="{{#if profileForm }}{{ profileFormName }}{{/if}}" 
-        action="/">
+        <form class="profile__data user disabled" name="profileForm">
 
             {{{ data }}}
 
@@ -42,9 +43,7 @@ const temp: any = `<div class="profile">
 
     <div class="password hidden">
 
-         <form class="profile__data password" 
-         name="{{#if passForm }}{{ passFormName }}{{/if}}"
-          action="/">
+         <form class="profile__data password" name="passForm">
 
             {{{ fields_password }}}
 
@@ -60,6 +59,9 @@ const temp: any = `<div class="profile">
 
     </div>
 
-</div>` as string;
+</div>
+
+{{{ popup }}}
+` as string;
 
 export default temp;

@@ -1,5 +1,3 @@
-import queryStringify from '../helpers/queryStringify';
-
 enum METHOD {
     GET = 'GET',
     POST = 'POST',
@@ -28,12 +26,7 @@ export default class HTTPTransport {
         this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
 
-    public get:HTTPMethod = (url, options = {}) => {
-        const query: string = queryStringify(options.data);
-        const urlWithQuery: string = `${url}${query}`;
-
-        return this.request(this.endpoint + urlWithQuery, { ...options, method: METHOD.GET }, options.timeout);
-    };
+    public get:HTTPMethod = (url = '/', options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.GET }, options.timeout);
 
     public post:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.POST }, options.timeout);
 
@@ -43,7 +36,7 @@ export default class HTTPTransport {
 
     public delete:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.DELETE }, options.timeout);
 
-    private request = (url: string, options: Options = {}, timeout = 5000) => {
+    private request = (url: string, options: Options = {}, timeout = 5000): Promise<unknown> => {
         const { method, data, headers = {} } = options;
 
         return new Promise((resolve, reject) => {
@@ -56,9 +49,10 @@ export default class HTTPTransport {
 
             xhr.open(method, url);
 
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            // но если отправляем картинку, то там не нужен такой заголовок
-            // если data instanceof FormData
+            // если отправляем картинку, то там не нужен такой заголовок
+            if (!(data instanceof FormData)) {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            }
 
             if (headers) {
                 Object.entries(headers).forEach(([header, value]) => {
@@ -78,7 +72,7 @@ export default class HTTPTransport {
                 const { status, response } = xhr;
 
                 if (status >= 200 && status <= 300) {
-                    resolve(xhr);
+                    resolve(response);
                 } else {
                     reject(response);
                 }
@@ -87,7 +81,7 @@ export default class HTTPTransport {
             if (method === METHOD.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                xhr.send((data instanceof FormData) ? data : JSON.stringify(data));
             }
         });
     };
