@@ -1,160 +1,5 @@
 @import "./styles";
 
-.feed {
-    @include fixed-height;
-
-    background: $aside-color;
-
-    &__header {
-        @include sticky;
-
-        top: 0;
-        padding: 15px 10px;
-        background: $aside-color;
-        z-index: 100;
-    }
-
-    &__links {
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        a {
-            color: $label-color;
-            font-size: 13px;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-
-            span {
-                font-size: 12px;
-            }
-        }
-    }
-
-    &__create {
-        padding: 8px 12px !important;
-
-        .icon {
-            font-size: 17px;
-        }
-    }
-
-    &__item {
-        border-bottom: 1px solid $fill-color;
-        background-color: transparent;
-        padding: 12px 10px;
-        display: flex;
-        gap: 10px;
-        cursor: pointer;
-        transition: 0.3s;
-
-        
-
-        &:hover {
-            background-color: $white-color;
-        }
-    }
-
-    &__item.selected {
-        background-color: $fill-color;
-    }
-
-    &__image {
-        width: 48px;
-        height: 48px;
-        background: #3369f517;
-        border: 1px solid #ffffff;
-        border-radius: 50%;
-        min-width: 48px;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-
-    &__content {
-        @include column;
-
-        flex-grow: 1;
-        font-size: 13px;
-    }
-
-    &__name {
-        font-weight: $bold;
-        font-size: 14px;
-        margin-bottom: 2px;
-    }
-
-    &__text {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-        flex-grow: 1;
-
-        .text {
-            flex-grow: 1;
-        }
-
-        b {
-            font-weight: $bold;
-        }
-    }
-
-    &__info {
-        display: flex;
-        justify-content: space-between;
-        gap: 15px;
-    }
-
-    &__time {
-        color: $label-color;
-        font-size: 11px;
-    }
-
-    &__unread {
-        width: 20px;
-        min-width: 20px;
-        height: 20px;
-        background: $primary-color;
-        color: $white-color;
-        border-radius: 50%;
-        text-align: center;
-        font-size: 12px;
-        line-height: 1.7;
-        margin-top: auto;
-    }
-
-    .popup__content {
-
-        .input__field {
-            opacity: 1;
-            border-bottom: 1px solid #efefef;
-            text-align: center;
-            font-size: 16px;
-        }
-    }
-}
-
-.search {
-    &__inner {
-        margin-top: 20px;
-
-        input {
-            background: $fill-color;
-            width: 100%;
-            text-align: center;
-            padding: 7px;
-            border-radius: 5px;
-        }
-    }
-}
-
 .chat {
     display: flex;
     flex-direction: column-reverse;
@@ -259,7 +104,6 @@
     }
 
     &__area.notactive {
-
         .chat__header,
         .chat__add {
             display: none;
@@ -273,6 +117,158 @@
     }
 }
 
+.feed {
+    @include fixed-height;
+
+    background: $aside-color;
+
+    &__header {
+        @include sticky;
+
+        top: 0;
+        padding: 15px 10px;
+        background: $aside-color;
+        z-index: 100;
+    }
+
+    &__links {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            color: $label-color;
+            font-size: 13px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+
+    &__create {
+        padding: 8px 12px !important;
+
+        .icon {
+            font-size: 17px;
+        }
+    }
+
+    &__item {
+        border-bottom: 1px solid $fill-color;
+        background-color: transparent;
+        padding: 12px 10px;
+        display: flex;
+        gap: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: $white-color;
+        }
+    }
+
+    &__item.selected {
+        background-color: $fill-color;
+    }
+
+    &__image {
+        width: 48px;
+        height: 48px;
+        background: #3369f517;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        min-width: 48px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        @include column;
+
+        flex-grow: 1;
+        font-size: 13px;
+    }
+
+    &__name {
+        font-weight: $bold;
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+    &__text {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-grow: 1;
+
+        .text {
+            flex-grow: 1;
+        }
+
+        b {
+            font-weight: $bold;
+        }
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    &__time {
+        color: $label-color;
+        font-size: 11px;
+    }
+
+    &__unread {
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+        background: $primary-color;
+        color: $white-color;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.7;
+        margin-top: auto;
+    }
+
+    .popup__content {
+        .input__field {
+            opacity: 1;
+            border-bottom: 1px solid #efefef;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+}
+
+.search {
+    &__inner {
+        margin-top: 20px;
+
+        input {
+            background: $fill-color;
+            width: 100%;
+            text-align: center;
+            padding: 7px;
+            border-radius: 5px;
+        }
+    }
+}
+
 %message {
     padding: 12px 20px 18px;
     background: $aside-color;
@@ -282,7 +278,7 @@
     max-width: 50%;
     clear: both;
     min-width: 145px;
-    display: inline-block
+    display: inline-block;
 }
 
 .message {

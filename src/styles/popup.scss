@@ -7,7 +7,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #000000cc;
+    background: #000c;
     z-index: 666;
 
     .button__wrapper {
@@ -55,8 +55,9 @@
     }
 }
 
-.popup[data-open='true'] {
+.popup[data-open="true"] {
     @include centered;
+
     display: flex;
 }
 

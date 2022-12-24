@@ -62,6 +62,20 @@ a,
     }
 }
 
+.button-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0;
+    border-radius: 50%;
+    padding: 8px;
+
+    &::before,
+    span {
+        content: "";
+        font-size: 18px;
+    }
+}
+
 button,
 .button {
     &__wrapper {
@@ -86,7 +100,7 @@ button,
         background-color: $primary-color-hover;
 
         span {
-            opacity: .9 !important;
+            opacity: 0.9 !important;
             color: #fff !important;
         }
     }
@@ -94,20 +108,6 @@ button,
 
 .button-round {
     border-radius: 10px;
-}
-
-.button-icon {
-    width: 34px;
-    height: 34px;
-    font-size: 0;
-    border-radius: 50%;
-    padding: 8px;
-
-    &::before,
-    span {
-        content: "";
-        font-size: 18px;
-    }
 }
 
 .hidden {
