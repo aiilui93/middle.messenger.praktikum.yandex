@@ -79,6 +79,8 @@ button,
     border: 0;
     cursor: pointer;
     color: $white-color;
+    align-items: center;
+    gap: 5px;
 
     &:hover {
         background-color: $primary-color-hover;

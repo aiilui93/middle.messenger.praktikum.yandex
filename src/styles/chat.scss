@@ -17,7 +17,8 @@
     &__links {
         margin-bottom: 20px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
 
         a {
             color: $label-color;
@@ -33,6 +34,14 @@
         }
     }
 
+    &__create {
+        padding: 8px 12px !important;
+
+        .icon {
+            font-size: 17px;
+        }
+    }
+
     &__item {
         border-bottom: 1px solid $fill-color;
         background-color: transparent;
@@ -42,17 +51,31 @@
         cursor: pointer;
         transition: 0.3s;
 
+        
+
         &:hover {
             background-color: $white-color;
         }
     }
 
+    &__item.selected {
+        background-color: $fill-color;
+    }
+
     &__image {
         width: 48px;
         height: 48px;
-        background: $fill-color;
+        background: #3369f517;
+        border: 1px solid #ffffff;
         border-radius: 50%;
         min-width: 48px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
     &__content {
@@ -106,6 +129,16 @@
         line-height: 1.7;
         margin-top: auto;
     }
+
+    .popup__content {
+
+        .input__field {
+            opacity: 1;
+            border-bottom: 1px solid #efefef;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
 }
 
 .search {
@@ -123,9 +156,11 @@
 }
 
 .chat {
-    @include fixed-height;
-    @include column;
-
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    overflow-y: auto;
+    height: calc(100vh - 138px);
     padding: 0 20px;
 
     &__header {
@@ -135,9 +170,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 0;
+        padding: 15px;
         border-bottom: 1px solid $fill-color;
-        margin-bottom: 20px;
         background: $white-color;
         z-index: 100;
     }
@@ -164,7 +198,14 @@
     &__body {
         @include column;
 
+        position: relative;
         flex-grow: 1;
+    }
+
+    &__group {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     &__date {
@@ -178,15 +219,57 @@
         @include sticky;
 
         bottom: 0;
-        z-index: 100;
+        z-index: 10;
         background: $white-color;
         border-top: 1px solid $fill-color;
         margin-top: 10px;
-        padding: 15px 0;
+        padding: 15px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
+    }
+
+    &__area {
+        height: 100vh;
+        overflow: hidden;
+
+        .popup .input label {
+            display: none;
+        }
+
+        .input__field {
+            color: #1e1e1e;
+            border-bottom: 1px solid #efefef;
+            padding-top: 2px;
+            padding-bottom: 3px;
+            font-size: 16px;
+            opacity: 1 !important;
+            text-align: center;
+        }
+    }
+
+    &__plug {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    &__area.notactive {
+
+        .chat__header,
+        .chat__add {
+            display: none;
+        }
+
+        .chat__plug {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }
 
@@ -194,11 +277,12 @@
     padding: 12px 20px 18px;
     background: $aside-color;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin: 8px 0;
     position: relative;
     max-width: 50%;
     clear: both;
     min-width: 145px;
+    display: inline-block
 }
 
 .message {
@@ -254,6 +338,13 @@
         color: $black-color;
         font-weight: $medium;
         line-height: 1.4;
+        margin-bottom: 8px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 }
 

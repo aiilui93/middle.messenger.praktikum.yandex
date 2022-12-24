@@ -9,9 +9,9 @@ export type Props<P extends Record<string, unknown> = any> = { events?: Record<s
 export enum Routes {
     Index = '/',
     Login = '/login',
-    Signup = '/signup',
+    Signup = '/sign-up',
     Settings = '/settings',
-    Chat = '/chat',
+    Chat = '/messenger',
     Error404 = '/404',
     Error500 = '/500',
 }
@@ -29,17 +29,6 @@ export interface FieldInputs {
         focusin: (e: Event) => void;
         focusout: (e: Event) => void;
     };
-}
-
-export interface MessagesData {
-    name: string,
-    image?: string,
-    image_alt?: string,
-    position: string,
-    status: string,
-    text?: string,
-    time: Date,
-    timeText?: string
 }
 
 export interface ChatListData {
@@ -92,9 +81,37 @@ export interface ChatInfo {
     title: string;
     avatar: string;
     unread_count: number;
+    selectedChat?: boolean;
     last_message: {
       user: User,
       time: string;
       content: string;
     }
+}
+
+export interface Message {
+    name?: string,
+    chat_id: number;
+    time: string;
+    timeText?: string;
+    type: string;
+    user_id: string;
+    content: string;
+    mine?: boolean;
+    file?: {
+        id: number;
+        user_id: number;
+        path: string;
+        filename: string;
+        content_type: string;
+        content_size: number;
+        upload_date: string;
+    }
+}
+
+export interface State {
+    user: User;
+    chats: ChatInfo[];
+    messages: Record<number, Message[]>;
+    selectedChat?: number;
 }

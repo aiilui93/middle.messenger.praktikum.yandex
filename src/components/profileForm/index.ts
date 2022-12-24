@@ -35,13 +35,12 @@ class ProfileFormBase extends Block<Record<string, any>> {
 
         // выводим данные формы в консоль
         const data = values as unknown;
-        console.log(data);
 
         switch (name) {
         case 'profileForm':
             UserController.changeUserData(data as SignupData);
             break;
-        case 'passwordForm':
+        case 'passForm':
             UserController.changeUserPassword(data as Password);
             break;
         default:

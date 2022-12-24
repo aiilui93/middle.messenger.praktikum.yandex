@@ -38,8 +38,8 @@ class UserController {
             await AuthController.fetchUser();
             store.set('user.error', undefined);
         } catch (error: any) {
-            store.set('user.error', error.message.reason);
-            console.error(error.message.reason);
+            store.set('user.error', error.message);
+            console.error(error.message);
         }
     }
 }

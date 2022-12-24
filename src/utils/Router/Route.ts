@@ -1,3 +1,4 @@
+import Block from '../Block/Block';
 import renderPage from '../render/renderPage';
 import { ObjectLiteral } from '../types/dataTypes';
 
@@ -6,7 +7,7 @@ class Route {
 
     _blockClass: any;
 
-    _block: null | any;
+    _block: null | Block;
 
     _props: ObjectLiteral;
 

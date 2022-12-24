@@ -12,9 +12,7 @@ import Link from '../../components/link';
 import { Routes } from '../../utils/types/dataTypes';
 import Router from '../../utils/Router/Router';
 import AuthController from '../../controllers/AuthController';
-import store from '../../utils/Store/Store';
 import ProfileForm from '../../components/profileForm';
-import UserController from '../../controllers/UserController';
 import Image from '../../components/image';
 
 const inputsData: Record<string, object> = createInstances(FormData.data.reverse(), Input);
@@ -186,6 +184,30 @@ const settingsPage = new SettingsPage({
         events: {
             click: (e: Event) => {
                 e.preventDefault();
+                buttonData.hide();
+
+                const profile = document.querySelector('.profile__data') as HTMLElement;
+                const nav = document.querySelector('.profile__nav') as HTMLElement;
+                const data = document.querySelector('.data') as HTMLElement;
+                const psw = document.querySelector('.password') as HTMLElement;
+
+                if (data) {
+                    data.classList.remove('hidden');
+                }
+
+                if (psw) {
+                    psw.classList.add('hidden');
+                }
+
+                if (profile) {
+                    profile.classList.add('disabled');
+                }
+
+                if (nav) {
+                    nav.style.display = 'block';
+                }
+
+                buttonData.hide();
                 Router.go(Routes.Chat);
             },
         },

@@ -1,4 +1,3 @@
-import renderPage from './src/utils/render/renderPage';
 import loginForm from './src/pages/login';
 import signupForm from './src/pages/signup';
 import settingsPage from './src/pages/settings';
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        console.log(isProtectedRoute);
         await AuthController.fetchUser();
 
         Router.start();

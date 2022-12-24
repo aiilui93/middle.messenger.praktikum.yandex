@@ -1,8 +1,14 @@
 import rules from './rules';
 
-const validateRegExp = (el: HTMLElement, ruleName: string, repeater?: string) => {
+const validateRegExp = (el: HTMLElement | HTMLInputElement, ruleName: string, repeater?: string) => {
     const result: Record<string, any> = {};
-    const input = el.querySelector('input')! || el.querySelector('textarea')!;
+    let input;
+
+    if (el instanceof HTMLInputElement) {
+        input = el;
+    } else {
+        input = el.querySelector('input')! || el.querySelector('textarea')!;
+    }
 
     if (ruleName === 'repeater' && repeater) {
         const repeatInput = document.querySelector(`input[name="${repeater}"]`) as HTMLInputElement;

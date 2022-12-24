@@ -59,6 +59,8 @@ const temp: any = `<div class="profile">
 
     </div>
 
+    <div class="errors"> {{ errors }} </div>
+    
 </div>
 
 {{{ popup }}}

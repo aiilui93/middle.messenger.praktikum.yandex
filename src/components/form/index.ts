@@ -23,7 +23,6 @@ class FormBase extends Block<Record<string, unknown>> {
 
         // выводим данные формы в консоль
         const data = values as unknown;
-        console.log(data);
 
         switch (name) {
         case 'signup':

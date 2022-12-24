@@ -1,51 +1,37 @@
 import BaseAPI from './BaseAPI';
 
-export default class ChatsAPI extends BaseAPI {
+export class ChatsAPI extends BaseAPI {
     constructor() {
         super('/chats');
     }
 
     create(chatName: string) {
         const data = { title: chatName };
-        return this.http.post('/', { data })
-            .then(() => true)
-            .catch((e) => {
-                throw new Error(e.reason);
-            });
+        return this.http.post('/', { data });
     }
 
     delete(id: number): Promise<unknown> {
         const data = { chatId: id };
-        return this.http.delete('/', { data })
-            .then(() => true)
-            .catch((e) => {
-                throw new Error(e.reason);
-            });
+        return this.http.delete('/', { data });
     }
 
-    read(): Promise<unknown> {
-        return this.http.get('/')
-            .then(() => true)
-            .catch((e) => {
-                throw new Error(e.reason);
-            });
+    read():Promise<unknown> {
+        return this.http.get('/');
     }
 
     getUsers(id: number): Promise<unknown> {
-        return this.http.get(`/${id}/users`)
-            .then(() => true)
-            .catch((e) => {
-                throw new Error(e.reason);
-            });
+        return this.http.get(`/${id}/users`);
     }
 
-    addUsers(id: number, usersArray: number[]): Promise<unknown> {
-        const data = { users: usersArray, chatId: id };
-        return this.http.put('/users', { data })
-            .then(() => true)
-            .catch((e) => {
-                throw new Error(e.reason);
-            });
+    addUsers(id: number, users: number[]): Promise<unknown> {
+        const data = { users, chatId: id };
+        console.log(data);
+        return this.http.put('/users', { data });
+    }
+
+    removeUsers(id: number, users: number[]): Promise<unknown> {
+        const data = { users, chatId: id };
+        return this.http.delete('/users', { data });
     }
 
     async getToken(id: number): Promise<string> {
@@ -55,3 +41,5 @@ export default class ChatsAPI extends BaseAPI {
 
     update = undefined;
 }
+
+export default new ChatsAPI();

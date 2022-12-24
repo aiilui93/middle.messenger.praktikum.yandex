@@ -12,6 +12,10 @@ const rules: Record<string, Rule> = {
         error: 'Введите 3-20 латинских символов',
         rule: /(?!^\d+$)^[\w-]{3,20}$/,
     },
+    chatname: {
+        error: 'Введите 3-20 букв или цифр',
+        rule: /^[\sa-zа-я0-9-_?!#$@.,]{3,20}$/i,
+    },
     email: {
         error: 'Введите валидный e-mail',
         rule: /^[\w-]+@[A-Za-z]+\.\w+$/,
@@ -26,7 +30,11 @@ const rules: Record<string, Rule> = {
     },
     message: {
         error: 'Введите сообщение',
-        rule: /^\S+$/,
+        rule: /^.+$/i,
+    },
+    number: {
+        error: 'Введите число',
+        rule: /^[0-9]{1,100}$/i,
     },
 };
 

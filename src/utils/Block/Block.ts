@@ -57,6 +57,9 @@ class Block<P extends Record<string, unknown> = any> {
         const props = {} as Record<string, unknown>;
 
         Object.entries(propsWithChildren).forEach(([key, value]) => {
+            if (value === null) {
+                return;
+            }
             if (value instanceof Block) {
                 children[key] = value;
             } else {

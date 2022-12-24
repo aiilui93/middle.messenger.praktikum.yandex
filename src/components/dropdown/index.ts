@@ -1,10 +1,16 @@
 import Block from '../../utils/Block/Block';
 import template from './dropdown';
 import '../../styles/dropdown.scss';
+import Button from '../button';
 
 type DropdownProps = {
     class?: string;
-    items: Record<string, string>[];
+    items?: Record<string, any>[];
+    add_user?: unknown;
+    remove_user?: unknown;
+    add_photo?: unknown;
+    add_file?: unknown;
+    add_location?: unknown;
     events?: {
         click: (e: Event) => void;
     };
@@ -20,9 +26,11 @@ export default class Dropdown extends Block<DropdownProps> {
                 events: {
                     // любой инстанс класса dropdown в любом случае имеет такое поведение при клике
                     click: (e: Record<string, any>) => {
+                        const target = e.target.classList;
+                        const condition = target.contains('dropdown__item') || target.contains('icon_dropdown__item');
                         const dropdown = e.target.closest('.dropdown');
 
-                        if (dropdown) {
+                        if (!condition && dropdown) {
                             const content = dropdown.querySelector('.dropdown__content');
                             const itemPos = dropdown.getBoundingClientRect().top;
                             content.classList.toggle('show');

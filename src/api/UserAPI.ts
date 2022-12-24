@@ -26,7 +26,7 @@ export default class UserAPI extends BaseAPI {
         return this.http.put('/password', { data })
             .then(() => true)
             .catch((e) => {
-                throw new Error(e);
+                throw new Error(e.reason);
             });
     }
 
