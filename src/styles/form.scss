@@ -22,6 +22,10 @@
         @include column;
 
         flex-grow: 1;
+
+        .error {
+            color: $error-color;
+        }
     }
 
     &__row {

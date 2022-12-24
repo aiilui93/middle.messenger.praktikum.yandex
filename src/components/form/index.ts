@@ -5,13 +5,14 @@ import '../../styles/form.scss';
 import AuthController from '../../controllers/AuthController';
 import { SigninData, SignupData } from '../../utils/types/dataTypes';
 import withStore from '../../utils/hocs/withStore';
+import store from '../../utils/Store/Store';
 
 class FormBase extends Block<Record<string, unknown>> {
     constructor(props: Record<string, unknown>) {
         super('div', 'app', props);
     }
 
-    sendData() {
+    async sendData() {
         const values: Record<string, string> = {};
         const name: any = this.props.name as string;
         const formData: any = new FormData(document.forms[name] as HTMLFormElement);
@@ -29,7 +30,14 @@ class FormBase extends Block<Record<string, unknown>> {
             AuthController.signup(data as SignupData);
             break;
         case 'login':
-            AuthController.signin(data as SigninData);
+            await AuthController.signin(data as SigninData);
+
+            if (store.getState().user.error !== undefined) {
+                this.setProps({
+                    error: store.getState().user.error,
+                });
+            }
+
             break;
         default:
             break;
