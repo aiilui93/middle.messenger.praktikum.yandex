@@ -1,16 +1,18 @@
 import Block from '../../utils/Block/Block';
 import temp from './popupTemplate';
+import withStore from '../../utils/hocs/withStore';
 
 type PopupProps = {
     title: string;
     id: string;
+    closeBtn: unknown;
     opened: boolean;
     content: any
 }
 
-export default class Popup extends Block<PopupProps> {
+class PopupBase extends Block<PopupProps> {
     constructor(props: PopupProps) {
-        super('div', 'popup', props);
+        super('div', '', props);
     }
 
     open() {
@@ -29,3 +31,8 @@ export default class Popup extends Block<PopupProps> {
         return this.compile(temp, { ...this.props });
     }
 }
+
+const withUser = withStore((state) => ({ storeData: { ...state.user }.data }));
+const Popup = withUser(PopupBase);
+
+export default Popup;

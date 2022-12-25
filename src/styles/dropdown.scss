@@ -38,15 +38,15 @@
     }
 
     &__item {
-        background-color: transparent;
-        color: $text-color;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        justify-content: flex-start;
-        border-radius: 0;
-        font-weight: $bold;
-        padding: 8px 12px;
+        background-color: transparent !important;
+        color: $text-color !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        justify-content: flex-start !important;
+        border-radius: 0 !important;
+        font-weight: $bold !important;
+        padding: 8px 12px !important;
 
         .icon {
             font-size: 25px;
@@ -54,11 +54,11 @@
         }
 
         &:hover {
-            color: $primary-color-hover;
-            background-color: transparent;
+            color: $primary-color-hover !important;
+            background-color: transparent !important;
 
             .icon {
-                color: $primary-color-hover;
+                color: $primary-color-hover !important;
             }
         }
     }

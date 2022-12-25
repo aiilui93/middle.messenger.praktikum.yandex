@@ -1,23 +1,19 @@
 import Block from '../../utils/Block/Block';
+import getTime from '../../utils/helpers/getTime';
 import template from './message';
 
-type MessageProps = {
-    image?: string,
-    image_alt?: string,
-    position: string,
-    status: string,
-    text?: string,
-    time: Date,
-    timeText?: string
-}
-
-export default class Message extends Block<MessageProps> {
-    constructor(props: MessageProps) {
+export default class Message extends Block<Record<string, unknown>> {
+    constructor(props: Record<string, unknown>) {
         super('div', '', props);
-        this.props.timeText = ` ${props.time.getHours()}:${props.time.getMinutes()}`;
     }
 
     render() {
+        // Перед рендером дату надо представить в ином виде
+        if (this.props.time) {
+            this.setProps({
+                timeText: getTime(this.props.time as string),
+            });
+        }
         return this.compile(template, { ...this.props });
     }
 }

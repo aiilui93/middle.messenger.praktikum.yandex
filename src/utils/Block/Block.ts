@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
 import EventBus from '../EventBus/EventBus';
+import { Props } from '../types/dataTypes';
 
 type BlockEvents<P = any> = {
     init: [];
@@ -8,8 +9,6 @@ type BlockEvents<P = any> = {
     'flow:component-did-update': [P, P];
     'flow:render': [];
 }
-
-type Props<P extends Record<string, unknown> = any> = { events?: Record<string, (e: object) => void> } & P;
 
 class Block<P extends Record<string, unknown> = any> {
     static EVENTS = {
@@ -58,6 +57,9 @@ class Block<P extends Record<string, unknown> = any> {
         const props = {} as Record<string, unknown>;
 
         Object.entries(propsWithChildren).forEach(([key, value]) => {
+            if (value === null) {
+                return;
+            }
             if (value instanceof Block) {
                 children[key] = value;
             } else {
@@ -107,8 +109,11 @@ class Block<P extends Record<string, unknown> = any> {
 
     protected init() {
         this._createResources();
+        this._init();
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
+
+    _init() {}
 
     _componentDidMount() {
         this.componentDidMount();
@@ -246,7 +251,7 @@ class Block<P extends Record<string, unknown> = any> {
     }
 
     show() {
-        this.getContent()!.style.display = 'block';
+        this.getContent()!.style.display = 'flex';
     }
 
     hide() {

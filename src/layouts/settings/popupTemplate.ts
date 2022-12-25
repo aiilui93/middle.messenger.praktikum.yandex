@@ -1,6 +1,8 @@
 // language=hbs
-const temp: any = `<div id="{{ id }}">
+const temp: any = `<div id="{{ id }}" class="popup" data-open= {{ opened }} >
+    
     <div class="popup__content">
+        {{{ closeBtn }}}
         <div class="popup__title">{{ title }}</div>
 
         {{{ content }}}

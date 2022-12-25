@@ -1,13 +1,13 @@
 // language=hbs
 const temp: any = `
-<div class="message message--{{ position }} message--{{ status }}">
+<div class="message message--{{#if isMine}}right{{/if}} message--read">
     <div class="message__content">
-        {{#if image}}
-            <img src="/static/img/{{ image }}" alt="{{ image_alt }}">
+        {{#if file}}
+            <img src="/static/img/{{ file.path }}" alt="{{ file.filename }}">
         {{/if}}
 
-        {{#if text}}
-            {{ text }}
+        {{#if content }}
+            {{ content }}
         {{/if}}
     </div>
     <div class="message__time">{{ timeText }}</div>

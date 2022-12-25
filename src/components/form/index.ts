@@ -2,13 +2,17 @@ import Block from '../../utils/Block/Block';
 import template from './form';
 import Input from '../input';
 import '../../styles/form.scss';
+import AuthController from '../../controllers/AuthController';
+import { SigninData, SignupData } from '../../utils/types/dataTypes';
+import withStore from '../../utils/hocs/withStore';
+import store from '../../utils/Store/Store';
 
-class Form extends Block<Record<string, unknown>> {
+class FormBase extends Block<Record<string, unknown>> {
     constructor(props: Record<string, unknown>) {
         super('div', 'app', props);
     }
 
-    showData() {
+    async sendData() {
         const values: Record<string, string> = {};
         const name: any = this.props.name as string;
         const formData: any = new FormData(document.forms[name] as HTMLFormElement);
@@ -19,7 +23,25 @@ class Form extends Block<Record<string, unknown>> {
         }
 
         // выводим данные формы в консоль
-        console.log(values);
+        const data = values as unknown;
+
+        switch (name) {
+        case 'signup':
+            AuthController.signup(data as SignupData);
+            break;
+        case 'login':
+            await AuthController.signin(data as SigninData);
+
+            if (store.getState().user.error !== undefined) {
+                this.setProps({
+                    error: store.getState().user.error,
+                });
+            }
+
+            break;
+        default:
+            break;
+        }
     }
 
     submitForm(inputs: Record<string, object>) {
@@ -35,11 +57,7 @@ class Form extends Block<Record<string, unknown>> {
         });
 
         if (isValid) {
-            this.showData();
-            // раньше тут был переход в чат, сейчас выводим данные формы в консоль, затем попадаем в чат
-            setTimeout(() => {
-                window.location.href = this.props.redirect as string;
-            }, 2000);
+            this.sendData();
         }
 
         return isValid;
@@ -49,5 +67,8 @@ class Form extends Block<Record<string, unknown>> {
         return this.compile(this.props.template || template, this.props);
     }
 }
+
+const withUser = withStore((state) => ({ storeData: { ...state.user }.data }));
+const Form = withUser(FormBase);
 
 export default Form;

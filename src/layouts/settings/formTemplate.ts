@@ -10,12 +10,13 @@ const temp: any = `<div class="profile">
     <div class="data">
 
         <form class="profile__data user disabled" 
-        name="{{#if nameProfileForm }}{{ name }}{{/if}}" 
+        {{ profileForm }}
+        name="{{#if profileForm }}{{ profileFormName }}{{/if}}" 
         action="/">
 
-            {{{ fields_data }}}
+            {{{ data }}}
 
-            {{#each fields_data}}
+            {{#each data}}
                 <div class="form__row">
                     {{{ this }}}
                 </div>
@@ -42,7 +43,7 @@ const temp: any = `<div class="profile">
     <div class="password hidden">
 
          <form class="profile__data password" 
-         name="{{#if namePassForm }}{{ name }}{{/if}}"
+         name="{{#if passForm }}{{ passFormName }}{{/if}}"
           action="/">
 
             {{{ fields_password }}}
