@@ -1,4 +1,4 @@
-import UserAPI from '../api/UserApi';
+import UserAPI from '../api/UserAPI';
 import Router from '../utils/Router/Router';
 import store from '../utils/Store/Store';
 import { Password, Routes, SignupData } from '../utils/types/dataTypes';
