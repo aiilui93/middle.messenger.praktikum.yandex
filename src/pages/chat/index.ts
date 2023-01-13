@@ -1,9 +1,7 @@
-import { messages, chatData } from './data';
 import ChatPage from '../../layouts/chat';
 import ChatFeed from '../../layouts/chat/feed';
 import ChatContent from '../../layouts/chat/chat';
 import Dropdown from '../../components/dropdown';
-import Message from '../../components/message';
 import Button from '../../components/button';
 import '../../styles/chat.scss';
 import Link from '../../components/link';
@@ -12,10 +10,6 @@ import Router from '../../utils/Router/Router';
 import Popup from '../../layouts/settings/popup';
 import Input from '../../components/input';
 import Form from '../../components/form';
-import ChatItem from '../../components/chat';
-
-const messageItems = messages.map((obj: Record<string, any>) => new Message(obj));
-const chatItems = chatData.map((obj: Record<string, any>) => new ChatItem(obj));
 
 const createChatPopup = new Popup({
     title: 'Введите название чата',
@@ -141,7 +135,6 @@ const addChatUsersPopup = new Popup({
 });
 
 const feed = new ChatFeed({
-    // chats: chatItems,
     popup: createChatPopup,
     title: 'Чат',
     link: new Link({
@@ -160,7 +153,7 @@ const feed = new ChatFeed({
         class: 'feed__create',
         icon: 'add',
         events: {
-            click: (e: Event) => {
+            click: () => {
                 createChatPopup.setProps({
                     opened: true,
                 });
@@ -170,7 +163,6 @@ const feed = new ChatFeed({
 });
 
 const chat = new ChatContent({
-    // messageItems,
     addUserPopup: addChatUsersPopup,
     removeUserPopup: removeChatUsersPopup,
     attachments: new Dropdown({
@@ -198,7 +190,7 @@ const chat = new ChatContent({
             name: 'Добавить пользователя',
             class: 'dropdown__item',
             events: {
-                click: (e: Event) => {
+                click: () => {
                     addChatUsersPopup.setProps({
                         opened: true,
                     });
@@ -210,7 +202,7 @@ const chat = new ChatContent({
             name: 'Удалить пользователя',
             class: 'dropdown__item',
             events: {
-                click: (e: Event) => {
+                click: () => {
                     removeChatUsersPopup.setProps({
                         opened: true,
                     });

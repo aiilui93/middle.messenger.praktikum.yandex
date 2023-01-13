@@ -64,7 +64,7 @@ class Block<P extends Record<string, unknown> = any> {
                 children[key] = value;
             } else {
                 if (typeof value === 'object') {
-                    Object.entries(value as object).forEach(([k, v]) => {
+                    Object.values(value as object).forEach((v) => {
                         if (v instanceof Block) {
                             children[key] = value as any;
                         }
@@ -159,7 +159,7 @@ class Block<P extends Record<string, unknown> = any> {
         const propsAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([name, content]) => {
-            Object.entries(content as object).forEach(([key, value]) => {
+            Object.values(content as object).forEach((value) => {
                 if (value instanceof Block) {
                     propsAndStubs[name] = `<div data-id='${value.id}'></div>`;
                 }
@@ -178,8 +178,8 @@ class Block<P extends Record<string, unknown> = any> {
 
         fragment.innerHTML = html;
 
-        Object.entries(this.children).forEach(([name, component]) => {
-            Object.entries(component as object).forEach(([key, value]) => {
+        Object.values(this.children).forEach((component) => {
+            Object.values(component as object).forEach((value) => {
                 if (value instanceof Block) {
                     const stubParent = fragment.content.querySelector(`[data-id="${component.id}"]`);
                     if (stubParent) {

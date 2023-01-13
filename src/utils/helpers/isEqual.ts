@@ -15,7 +15,7 @@ function isArrayOrObject(value: unknown): value is [] | PlainObject {
     return isPlainObject(value) || isArray(value);
 }
 
-function isEqual(lhs: PlainObject, rhs: PlainObject) {
+export default function isEqual(lhs: PlainObject, rhs: PlainObject) {
     if (Object.keys(lhs).length !== Object.keys(rhs).length) {
         return false;
     }
@@ -38,4 +38,3 @@ function isEqual(lhs: PlainObject, rhs: PlainObject) {
 
     return true;
 }
-export default isEqual;

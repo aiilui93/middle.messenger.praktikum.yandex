@@ -115,3 +115,9 @@ export interface State {
     messages: Record<number, Message[]>;
     selectedChat?: number;
 }
+
+export type ImageProps = {
+    src: string;
+    title: string;
+    path?: string;
+}

@@ -1,12 +1,7 @@
 import Block from '../../utils/Block/Block';
 import withStore from '../../utils/hocs/withStore';
+import { ImageProps } from '../../utils/types/dataTypes';
 import template from './image';
-
-type ImageProps = {
-    src: string;
-    title: string;
-    path?: string;
-}
 
 class ImageBase extends Block<ImageProps> {
     constructor(props: ImageProps) {

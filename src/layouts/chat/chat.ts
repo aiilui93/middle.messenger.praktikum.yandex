@@ -7,6 +7,7 @@ import { Message as IMessage } from '../../utils/types/dataTypes';
 import withStore from '../../utils/hocs/withStore';
 import messagesController from '../../controllers/MessagesController';
 import validateRegExp from '../../utils/helpers/validate';
+import isEqual from '../../utils/helpers/isEqual';
 
 type ChatContentProps = {
     attachments?: Record<string, any>;
@@ -78,7 +79,7 @@ class ChatContentBase extends Block<ChatContentProps> {
             this.children.messageItems = newProps.messages as any;
         }
 
-        return true;
+        return isEqual(oldProps, newProps);
     }
 
     sendMessage(value: string) {

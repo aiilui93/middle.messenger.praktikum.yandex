@@ -40,7 +40,7 @@
     }
 
     .input {
-        label {
+        &__label {
             cursor: pointer;
             color: $primary-color;
             text-align: center;
@@ -49,7 +49,7 @@
             text-decoration: underline;
         }
 
-        input {
+        &__field {
             opacity: 0;
         }
     }

@@ -1,4 +1,4 @@
-enum METHOD {
+enum Method {
     GET = 'GET',
     POST = 'POST',
     PUT = 'PUT',
@@ -7,7 +7,7 @@ enum METHOD {
 }
 
 type Options = {
-    method?: METHOD;
+    method?: Method;
     timeout?: number;
     headers?: Record<string, string>;
     data?: any;
@@ -15,7 +15,7 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<unknown>
+type HTTPMethod = <Res>(url: string, options?: OptionsWithoutMethod) => Promise<Res>
 
 export default class HTTPTransport {
     static API_URL = 'https://ya-praktikum.tech/api/v2';
@@ -26,17 +26,17 @@ export default class HTTPTransport {
         this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
 
-    public get:HTTPMethod = (url = '/', options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.GET }, options.timeout);
+    public get:HTTPMethod = (url = '/', options = {}) => this.request(this.endpoint + url, { ...options, method: Method.GET }, options.timeout);
 
-    public post:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.POST }, options.timeout);
+    public post:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: Method.POST }, options.timeout);
 
-    public put:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.PUT }, options.timeout);
+    public put:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: Method.PUT }, options.timeout);
 
-    public patch:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.PATCH }, options.timeout);
+    public patch:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: Method.PATCH }, options.timeout);
 
-    public delete:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: METHOD.DELETE }, options.timeout);
+    public delete:HTTPMethod = (url, options = {}) => this.request(this.endpoint + url, { ...options, method: Method.DELETE }, options.timeout);
 
-    private request = (url: string, options: Options = {}, timeout = 5000): Promise<unknown> => {
+    private request = <Res>(url: string, options: Options = {}, timeout = 5000): Promise<Res> => {
         const { method, data, headers = {} } = options;
 
         return new Promise((resolve, reject) => {
@@ -78,7 +78,7 @@ export default class HTTPTransport {
                 }
             };
 
-            if (method === METHOD.GET || !data) {
+            if (method === Method.GET || !data) {
                 xhr.send();
             } else {
                 xhr.send((data instanceof FormData) ? data : JSON.stringify(data));

@@ -1,6 +1,7 @@
 import ChatItem from '../../components/chat';
 import chatController from '../../controllers/ChatController';
 import Block from '../../utils/Block/Block';
+import isEqual from '../../utils/helpers/isEqual';
 import validateRegExp from '../../utils/helpers/validate';
 import withStore from '../../utils/hocs/withStore';
 import { ChatInfo } from '../../utils/types/dataTypes';
@@ -78,7 +79,7 @@ class ChatFeedBase extends Block<ChatFeedProps> {
             this.children.chats = newProps.chats as any;
         }
 
-        return true;
+        return isEqual(oldProps, newProps);
     }
 
     render() {

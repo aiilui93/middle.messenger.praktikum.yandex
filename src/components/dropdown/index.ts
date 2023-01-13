@@ -1,7 +1,6 @@
 import Block from '../../utils/Block/Block';
 import template from './dropdown';
 import '../../styles/dropdown.scss';
-import Button from '../button';
 
 type DropdownProps = {
     class?: string;
