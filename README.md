@@ -35,9 +35,9 @@
 
 ## Список страниц
 
-* [Авторизация](https://messenger-aiilui93.netlify.app/login)
-* [Регистрация](https://messenger-aiilui93.netlify.app/signup)
-* [Список чатов и лента переписки](https://messenger-aiilui93.netlify.app/chat)
+* [Авторизация](https://messenger-aiilui93.netlify.app/)
+* [Регистрация](https://messenger-aiilui93.netlify.app/sign-up)
+* [Список чатов и лента переписки](https://messenger-aiilui93.netlify.app/messenger)
 * [Настройки пользователя](https://messenger-aiilui93.netlify.app/settings)
 * [Страница 404](https://messenger-aiilui93.netlify.app/404)
 * [Страница 500](https://messenger-aiilui93.netlify.app/500)

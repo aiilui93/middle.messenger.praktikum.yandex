@@ -62,6 +62,20 @@ a,
     }
 }
 
+.button-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0;
+    border-radius: 50%;
+    padding: 8px;
+
+    &::before,
+    span {
+        content: "";
+        font-size: 18px;
+    }
+}
+
 button,
 .button {
     &__wrapper {
@@ -79,28 +93,21 @@ button,
     border: 0;
     cursor: pointer;
     color: $white-color;
+    align-items: center;
+    gap: 5px;
 
     &:hover {
         background-color: $primary-color-hover;
+
+        span {
+            opacity: 0.9 !important;
+            color: #fff !important;
+        }
     }
 }
 
 .button-round {
     border-radius: 10px;
-}
-
-.button-icon {
-    width: 34px;
-    height: 34px;
-    font-size: 0;
-    border-radius: 50%;
-    padding: 8px;
-
-    &::before,
-    span {
-        content: "";
-        font-size: 18px;
-    }
 }
 
 .hidden {

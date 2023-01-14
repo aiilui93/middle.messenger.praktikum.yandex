@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
 import EventBus from '../EventBus/EventBus';
+import { Props } from '../types/dataTypes';
 
 type BlockEvents<P = any> = {
     init: [];
@@ -8,8 +9,6 @@ type BlockEvents<P = any> = {
     'flow:component-did-update': [P, P];
     'flow:render': [];
 }
-
-type Props<P extends Record<string, unknown> = any> = { events?: Record<string, (e: object) => void> } & P;
 
 class Block<P extends Record<string, unknown> = any> {
     static EVENTS = {
@@ -58,11 +57,14 @@ class Block<P extends Record<string, unknown> = any> {
         const props = {} as Record<string, unknown>;
 
         Object.entries(propsWithChildren).forEach(([key, value]) => {
+            if (value === null) {
+                return;
+            }
             if (value instanceof Block) {
                 children[key] = value;
             } else {
                 if (typeof value === 'object') {
-                    Object.entries(value as object).forEach(([k, v]) => {
+                    Object.values(value as object).forEach((v) => {
                         if (v instanceof Block) {
                             children[key] = value as any;
                         }
@@ -107,8 +109,11 @@ class Block<P extends Record<string, unknown> = any> {
 
     protected init() {
         this._createResources();
+        this._init();
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
+
+    _init() {}
 
     _componentDidMount() {
         this.componentDidMount();
@@ -154,7 +159,7 @@ class Block<P extends Record<string, unknown> = any> {
         const propsAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([name, content]) => {
-            Object.entries(content as object).forEach(([key, value]) => {
+            Object.values(content as object).forEach((value) => {
                 if (value instanceof Block) {
                     propsAndStubs[name] = `<div data-id='${value.id}'></div>`;
                 }
@@ -173,8 +178,8 @@ class Block<P extends Record<string, unknown> = any> {
 
         fragment.innerHTML = html;
 
-        Object.entries(this.children).forEach(([name, component]) => {
-            Object.entries(component as object).forEach(([key, value]) => {
+        Object.values(this.children).forEach((component) => {
+            Object.values(component as object).forEach((value) => {
                 if (value instanceof Block) {
                     const stubParent = fragment.content.querySelector(`[data-id="${component.id}"]`);
                     if (stubParent) {
@@ -246,7 +251,7 @@ class Block<P extends Record<string, unknown> = any> {
     }
 
     show() {
-        this.getContent()!.style.display = 'block';
+        this.getContent()!.style.display = 'flex';
     }
 
     hide() {

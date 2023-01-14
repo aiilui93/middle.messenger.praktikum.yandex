@@ -5,6 +5,7 @@ type ButtonProps = {
     name: string;
     class?: string;
     icon?: string;
+    popup?: any;
     events?: {
         click: (e: any) => void;
     };
