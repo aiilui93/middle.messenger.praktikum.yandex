@@ -125,9 +125,9 @@ button,
     line-height: 1;
 }
 
-
 @media screen and (max-width: 767px) {
-    .app, #app {
+    .app,
+    #app {
         justify-content: space-between;
         align-items: stretch;
     }
