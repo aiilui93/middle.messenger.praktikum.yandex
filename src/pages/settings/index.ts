@@ -176,10 +176,9 @@ const profileForm = new ProfileForm({
 
 const settingsPage = new SettingsPage({
     form: profileForm,
-    link: new Link({
+    link: new Button({
+        name: '',
         class: 'app__back',
-        href: Routes.Chat,
-        anchor: '',
         icon: 'arrow_back_ios',
         events: {
             click: (e: Event) => {
