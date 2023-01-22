@@ -120,4 +120,5 @@ export type ImageProps = {
     src: string;
     title: string;
     path?: string;
+    user_id?: string;
 }

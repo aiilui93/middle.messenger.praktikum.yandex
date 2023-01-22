@@ -9,7 +9,7 @@
     &__avatar {
         display: flex;
         justify-content: center;
-        margin-bottom: 30px;
+        margin-bottom: 55px;
         position: relative;
         background: $fill-color;
         width: 130px;
@@ -25,6 +25,12 @@
             bottom: 0;
             left: 0;
             right: 0;
+
+            .user__id {
+                text-align: center;
+                margin: 8px 0;
+                color: #bfbfbf;
+            }
 
             img {
                 width: 100%;

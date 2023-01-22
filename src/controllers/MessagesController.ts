@@ -53,8 +53,8 @@ class MessagesController {
         let messagesToAdd: Message[] = [];
 
         if (Array.isArray(messages)) {
-            messagesToAdd = messages.reverse();
-        } else {
+            messagesToAdd = messages.filter((message) => message.type !== 'user connected').reverse();
+        } else if (messages.type !== 'user connected') {
             messagesToAdd.push(messages);
         }
 
