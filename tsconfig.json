@@ -1,4 +1,7 @@
-{
+{ 
+  "ts-node": {
+    "files": true
+  },
   "compilerOptions": {
     "outDir": "dist",
     "target": "es2016",
@@ -9,7 +12,7 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "skipLibCheck": true,
     "sourceMap": true,

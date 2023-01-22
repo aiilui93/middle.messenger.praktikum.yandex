@@ -8,7 +8,7 @@ export default class ChatPage extends Block<LayoutProps> {
         super('div', 'app', props);
     }
 
-    _init(): void {
+    init(): void {
         chatController.fetchChats()
             .catch(() => false)
             .finally(() => {

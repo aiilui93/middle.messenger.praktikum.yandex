@@ -6,7 +6,6 @@ import Button from '../../components/button';
 import '../../styles/chat.scss';
 import Link from '../../components/link';
 import { Routes } from '../../utils/types/dataTypes';
-import Router from '../../utils/Router/Router';
 import Popup from '../../layouts/settings/popup';
 import Input from '../../components/input';
 import Form from '../../components/form';
@@ -139,14 +138,8 @@ const feed = new ChatFeed({
     title: 'Чат',
     link: new Link({
         class: 'link',
-        symlink: Routes.Settings,
-        anchor: 'Профиль >',
-        events: {
-            click: (e: Event) => {
-                e.preventDefault();
-                Router.go(Routes.Settings);
-            },
-        },
+        href: Routes.Settings,
+        anchor: 'Профиль >'
     }),
     createChat: new Button({
         name: 'Добавить чат',

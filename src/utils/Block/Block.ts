@@ -10,7 +10,7 @@ type BlockEvents<P = any> = {
     'flow:render': [];
 }
 
-class Block<P extends Record<string, unknown> = any> {
+class Block<P extends Record<string, any> = any> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -20,9 +20,9 @@ class Block<P extends Record<string, unknown> = any> {
 
     public id = makeUUID();
 
-    public children: Record<any, Block>;
-
     protected props: Props<P>;
+
+    public children: Record<any, Block>;
 
     private eventBus: () => EventBus<BlockEvents<Props<P>>>;
 
@@ -30,7 +30,7 @@ class Block<P extends Record<string, unknown> = any> {
 
     private _meta: { tagName: string; className: string; props: any; };
 
-    protected constructor(tagName = 'div', className = '', propsWithChildren: Props<P> = {} as Props<P>) {
+    constructor(tagName = 'div', className = '', propsWithChildren: Props<P> = {} as Props<P>) {
         const { children, props } = this._getChildren(propsWithChildren);
 
         const eventBus = new EventBus();
@@ -79,7 +79,7 @@ class Block<P extends Record<string, unknown> = any> {
     }
 
     _registerEvents(eventBus: EventBus<BlockEvents>) {
-        eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+        eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
@@ -107,13 +107,14 @@ class Block<P extends Record<string, unknown> = any> {
         this._element.className = className;
     }
 
-    protected init() {
+    private _init() {
         this._createResources();
-        this._init();
+        this.init();
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    _init() {}
+    protected init() {
+    }
 
     _componentDidMount() {
         this.componentDidMount();
@@ -151,7 +152,7 @@ class Block<P extends Record<string, unknown> = any> {
         Object.assign(this.props, nextProps);
     };
 
-    get element() {
+    public get element() {
         return this._element;
     }
 

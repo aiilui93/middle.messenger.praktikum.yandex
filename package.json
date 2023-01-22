@@ -8,7 +8,8 @@
     "build": "rm -rf dist && parcel build ./index.html --no-cache",
     "server": "node server.js",
     "lint:ts": "npx eslint **/*.ts",
-    "lint:css": "npx stylelint **/*.scss"
+    "lint:css": "npx stylelint **/*.scss",
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts' --timeout 20000"
   },
   "staticFiles": {
     "staticPath": "static/",
@@ -18,6 +19,11 @@
   "author": "aiilui",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "4.3.4",
+    "@types/jsdom": "20.0.1",
+    "@types/mocha": "10.0.1",
+    "@types/proxyquire": "1.3.28",
+    "@types/sinon": "10.0.13",
     "@types/uuid": "8.3.4",
     "@typescript-eslint/eslint-plugin": "5.45.0",
     "@typescript-eslint/parser": "5.45.0",
@@ -26,12 +32,17 @@
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.25.3",
+    "jsdom": "21.0.0",
     "mocha": "10.2.0",
     "parcel": "2.7.0",
     "parcel-reporter-static-files-copy": "1.4.0",
+    "proxyquire": "2.1.3",
     "sass": "1.56.0",
+    "sinon": "15.0.1",
     "stylelint": "14.15.0",
     "stylelint-config-standard-scss": "6.1.0",
+    "ts-node": "10.9.1",
+    "type-detect": "4.0.8",
     "typed-scss-modules": "7.0.1",
     "typescript": "4.9.3"
   },

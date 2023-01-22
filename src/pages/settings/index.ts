@@ -178,7 +178,7 @@ const settingsPage = new SettingsPage({
     form: profileForm,
     link: new Link({
         class: 'app__back',
-        symlink: Routes.Chat,
+        href: Routes.Chat,
         anchor: '',
         icon: 'arrow_back_ios',
         events: {
