@@ -36,8 +36,8 @@
 
 ## Потрогать в интернете
 
-[Netlify](https://messenger-aiilui93.netlify.app/)
-[Render](https://messenger-test-yt6x.onrender.com/)
+* [Netlify](https://messenger-aiilui93.netlify.app/)
+* [Render](https://messenger-test-yt6x.onrender.com/)
 
 ## Список страниц
 
