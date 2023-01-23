@@ -1,7 +1,7 @@
 {
     "extends": "airbnb",
     "rules": {
-        "linebreak-style": ["error", "unix"],
+        "linebreak-style": ["error", "windows"],
         "comma-dangle": "off",
         "max-len": "off",
         "max-params": [2, 3],

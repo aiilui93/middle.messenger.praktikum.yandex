@@ -2,7 +2,7 @@
     "extends": "stylelint-config-standard-scss",
     "rules": {
         "color-hex-case": "lower",
-        "linebreaks": "windows",
+        "linebreaks": null,
         "indentation": 4,
         "selector-class-pattern": null,
         "number-leading-zero": null
