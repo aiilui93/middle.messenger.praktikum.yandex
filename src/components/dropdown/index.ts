@@ -27,7 +27,6 @@ export default class Dropdown extends Block<DropdownProps> {
                     // любой инстанс класса dropdown в любом случае имеет такое поведение при клике
                     click: (e: Record<string, any>) => {
                         const target = e.target.classList;
-                        console.log(target);
 
                         const condition = target.contains('dropdown__item') || target.contains('icon_dropdown__item');
                         const dropdown = e.target.closest('.dropdown');

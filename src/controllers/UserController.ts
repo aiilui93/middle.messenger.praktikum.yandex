@@ -21,7 +21,6 @@ class UserController {
 
     async changeUserAvatar(data: FormData) {
         try {
-            console.log(data);
             await this.api.changeUserAvatar(data);
             await AuthController.fetchUser();
             store.set('user.error', undefined);

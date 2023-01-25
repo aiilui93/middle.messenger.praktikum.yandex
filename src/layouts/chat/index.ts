@@ -12,7 +12,6 @@ export default class ChatPage extends Block<LayoutProps> {
         chatController.fetchChats()
             .catch(() => false)
             .finally(() => {
-                console.log('Получили чаты');
             });
     }
 

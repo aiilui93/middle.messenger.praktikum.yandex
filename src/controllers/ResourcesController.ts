@@ -6,7 +6,6 @@ class ResourcesController {
 
     async sendFile(data: FormData) {
         try {
-            console.log(data);
             await this.api.send(data);
             store.set('resources.error', undefined);
         } catch (error: any) {

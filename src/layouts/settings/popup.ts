@@ -19,7 +19,6 @@ class PopupBase extends Block<PopupProps> {
 
     open() {
         const name: string = store.getState().selectedChatName;
-        console.log(name);
 
         this.setProps({
             opened: true,
