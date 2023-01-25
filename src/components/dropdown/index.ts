@@ -7,6 +7,7 @@ type DropdownProps = {
     items?: Record<string, any>[];
     add_user?: unknown;
     remove_user?: unknown;
+    delete_chat?: unknown;
     add_photo?: unknown;
     add_file?: unknown;
     add_location?: unknown;
@@ -26,11 +27,13 @@ export default class Dropdown extends Block<DropdownProps> {
                     // любой инстанс класса dropdown в любом случае имеет такое поведение при клике
                     click: (e: Record<string, any>) => {
                         const target = e.target.classList;
+                        console.log(target);
+
                         const condition = target.contains('dropdown__item') || target.contains('icon_dropdown__item');
                         const dropdown = e.target.closest('.dropdown');
+                        const content = dropdown.querySelector('.dropdown__content');
 
                         if (!condition && dropdown) {
-                            const content = dropdown.querySelector('.dropdown__content');
                             const itemPos = dropdown.getBoundingClientRect().top;
                             content.classList.toggle('show');
 
@@ -42,6 +45,8 @@ export default class Dropdown extends Block<DropdownProps> {
                             } else {
                                 content.classList.remove('bottom');
                             }
+                        } else {
+                            content.classList.remove('show');
                         }
                     },
                 },

@@ -51,6 +51,40 @@ const createChatPopup = new Popup({
     }),
 });
 
+const deleteChatPopup = new Popup({
+    title: 'Вы уверены, что хотите удалить чат?',
+    id: 'chatId',
+    opened: false,
+    chatName: '{ Название чата }',
+    closeBtn: new Button({
+        name: '',
+        icon: 'close',
+        class: 'popup__close',
+        events: {
+            click: (e) => {
+                e.preventDefault();
+                deleteChatPopup.setProps({
+                    opened: false
+                });
+            },
+        },
+    }),
+    content: new Button({
+        name: 'Удалить чат',
+        class: 'delete-button',
+        events: {
+            click: (e) => {
+                e.preventDefault(e);
+                if (feed.removeChat()) {
+                    deleteChatPopup.setProps({
+                        opened: false,
+                    });
+                }
+            },
+        },
+    }),
+});
+
 const removeChatUsersPopup = new Popup({
     title: 'Удалить пользователя из чата',
     id: 'removeUser',
@@ -158,6 +192,7 @@ const feed = new ChatFeed({
 const chat = new ChatContent({
     addUserPopup: addChatUsersPopup,
     removeUserPopup: removeChatUsersPopup,
+    removeChatPopup: deleteChatPopup,
     attachments: new Dropdown({
         class: 'attach_file',
         add_photo: new Button({
@@ -199,6 +234,16 @@ const chat = new ChatContent({
                     removeChatUsersPopup.setProps({
                         opened: true,
                     });
+                },
+            },
+        }),
+        delete_chat: new Button({
+            icon: 'delete',
+            name: 'Удалить чат',
+            class: 'dropdown__item',
+            events: {
+                click: () => {
+                    deleteChatPopup.open();
                 },
             },
         }),

@@ -32,6 +32,8 @@ const temp: any = `
 
 {{{ addUserPopup }}}
 {{{ removeUserPopup }}}
+{{{ removeChatPopup }}}
+
 ` as string;
 
 export default temp;

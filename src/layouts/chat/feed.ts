@@ -4,6 +4,7 @@ import Block from '../../utils/Block/Block';
 import isEqual from '../../utils/helpers/isEqual';
 import validateRegExp from '../../utils/helpers/validate';
 import withStore from '../../utils/hocs/withStore';
+import store from '../../utils/Store/Store';
 import { ChatInfo } from '../../utils/types/dataTypes';
 import temp from './feedTemplate';
 
@@ -72,6 +73,12 @@ class ChatFeedBase extends Block<ChatFeedProps> {
         }
 
         return false;
+    }
+
+    removeChat() {
+        const chatId: number = store.getState().selectedChat;
+        chatController.delete(chatId);
+        return true;
     }
 
     componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>): boolean {
