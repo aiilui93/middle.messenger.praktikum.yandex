@@ -33,7 +33,7 @@ class ChatContentBase extends Block<ChatContentProps> {
         super('article', 'chat__area notactive', props);
     }
 
-    _init() {
+    init() {
         this.children.textarea = new Textarea({
             class: 'new-message__field',
             name: TextareaField.Field,

@@ -1,35 +1,4 @@
-@import "./styles";
-
-.app__back {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 64px;
-    background: $aside-color;
-    border-right: 1px solid $fill-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .icon {
-        @include centered;
-
-        font-size: 15px;
-        padding: 9px 2px 9px 7px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-    }
-
-    &:hover {
-        background: $fill-color;
-
-        .icon {
-            background-color: $primary-color-hover;
-        }
-    }
-}
+@import "./variables";
 
 .profile {
     width: 530px;
@@ -40,7 +9,7 @@
     &__avatar {
         display: flex;
         justify-content: center;
-        margin-bottom: 30px;
+        margin-bottom: 55px;
         position: relative;
         background: $fill-color;
         width: 130px;
@@ -56,6 +25,12 @@
             bottom: 0;
             left: 0;
             right: 0;
+
+            .user__id {
+                text-align: center;
+                margin: 8px 0;
+                color: #bfbfbf;
+            }
 
             img {
                 width: 100%;
@@ -178,6 +153,40 @@
             font-size: 52px;
             opacity: 0.4;
             color: $label-color;
+        }
+    }
+}
+
+.app {
+    .app__back {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 64px;
+        background: $aside-color;
+        border-right: 1px solid $fill-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+            @include centered;
+
+            font-size: 15px;
+            padding: 9px 2px 9px 7px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: $primary-color;
+        }
+
+        &:hover {
+            background: $fill-color;
+
+            .icon {
+                background-color: $primary-color-hover;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ class ChatItemBase extends Block<Record<string, any>> {
         super('div', '', props);
     }
 
-    _init() {
+    init() {
         this.setProps({
             events: {
                 click: () => {

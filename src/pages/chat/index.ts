@@ -6,7 +6,6 @@ import Button from '../../components/button';
 import '../../styles/chat.scss';
 import Link from '../../components/link';
 import { Routes } from '../../utils/types/dataTypes';
-import Router from '../../utils/Router/Router';
 import Popup from '../../layouts/settings/popup';
 import Input from '../../components/input';
 import Form from '../../components/form';
@@ -49,6 +48,40 @@ const createChatPopup = new Popup({
                 },
             },
         }),
+    }),
+});
+
+const deleteChatPopup = new Popup({
+    title: 'Вы уверены, что хотите удалить чат?',
+    id: 'chatId',
+    opened: false,
+    chatName: '{ Название чата }',
+    closeBtn: new Button({
+        name: '',
+        icon: 'close',
+        class: 'popup__close',
+        events: {
+            click: (e) => {
+                e.preventDefault();
+                deleteChatPopup.setProps({
+                    opened: false
+                });
+            },
+        },
+    }),
+    content: new Button({
+        name: 'Удалить чат',
+        class: 'delete-button',
+        events: {
+            click: (e) => {
+                e.preventDefault(e);
+                if (feed.removeChat()) {
+                    deleteChatPopup.setProps({
+                        opened: false,
+                    });
+                }
+            },
+        },
     }),
 });
 
@@ -139,14 +172,8 @@ const feed = new ChatFeed({
     title: 'Чат',
     link: new Link({
         class: 'link',
-        symlink: Routes.Settings,
-        anchor: 'Профиль >',
-        events: {
-            click: (e: Event) => {
-                e.preventDefault();
-                Router.go(Routes.Settings);
-            },
-        },
+        href: Routes.Settings,
+        anchor: 'Профиль >'
     }),
     createChat: new Button({
         name: 'Добавить чат',
@@ -165,6 +192,7 @@ const feed = new ChatFeed({
 const chat = new ChatContent({
     addUserPopup: addChatUsersPopup,
     removeUserPopup: removeChatUsersPopup,
+    removeChatPopup: deleteChatPopup,
     attachments: new Dropdown({
         class: 'attach_file',
         add_photo: new Button({
@@ -206,6 +234,16 @@ const chat = new ChatContent({
                     removeChatUsersPopup.setProps({
                         opened: true,
                     });
+                },
+            },
+        }),
+        delete_chat: new Button({
+            icon: 'delete',
+            name: 'Удалить чат',
+            class: 'dropdown__item',
+            events: {
+                click: () => {
+                    deleteChatPopup.open();
                 },
             },
         }),

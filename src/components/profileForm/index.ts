@@ -82,6 +82,7 @@ class ProfileFormBase extends Block<Record<string, any>> {
             avatar.setProps({
                 src: this.props.storeData.avatar,
                 title: this.props.storeData.display_name,
+                user_id: this.props.storeData.id,
             });
         } catch (error) {
             console.log(`Avatar was not received from Store. Value:  ${this.props.storeData.avatar}`);

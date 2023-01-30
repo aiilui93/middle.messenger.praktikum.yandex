@@ -6,7 +6,6 @@ import FormData from './data';
 import '../../styles/styles.scss';
 import '../../styles/form.scss';
 import Link from '../../components/link';
-import Router from '../../utils/Router/Router';
 import { Routes } from '../../utils/types/dataTypes';
 
 const inputs = createInstances(FormData.reverse(), Input);
@@ -28,14 +27,8 @@ const signupForm = new Form({
     }),
     link: new Link({
         class: 'form__link',
-        symlink: Routes.Login,
-        anchor: 'Войти',
-        events: {
-            click: (e: Event) => {
-                e.preventDefault();
-                Router.go(Routes.Login);
-            },
-        },
+        href: Routes.Login,
+        anchor: 'Войти'
     }),
 });
 

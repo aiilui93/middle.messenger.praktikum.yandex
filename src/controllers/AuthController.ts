@@ -47,6 +47,12 @@ class AuthController {
         const user = await this.api.read();
         store.set('user.data', user);
     }
+
+    async fetchChats() {
+        const chats = await this.api.read();
+
+        store.set('chats', chats);
+    }
 }
 
 export default new AuthController();

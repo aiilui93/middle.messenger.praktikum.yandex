@@ -25,7 +25,6 @@ export class ChatsAPI extends BaseAPI {
 
     addUsers(id: number, users: number[]): Promise<unknown> {
         const data = { users, chatId: id };
-        console.log(data);
         return this.http.put('/users', { data });
     }
 

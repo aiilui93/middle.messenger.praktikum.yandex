@@ -9,29 +9,35 @@
 ## Зависимости в проекте
 
 - handlebars
-- parcel
+- webpack
 - express
+- typescript
 - sass
 - eslint
 - stylelint
+- mocha, chai
 
 ## Линтеры
 
 - ESLint
 - Stylelint
 
+## Тесты
+
+- Mocha + chai
+
 ## Команды
 
-- `npm run start` — сборка проекта и запуск сервера express для раздачи статики
-- `npm run build` — сборка проекта
-- `npm run server` — запуск сервера на 3000 порту
-- `npm run dev` — команда для разработки
+- `npm run start` — сборка проекта и запуск сервера на (http://localhost:3000/)
+- `npm run dev` — dev-сборка
+- `npm run test` — запуск тестов
 - `npm run lint:ts` — запуск ESLint
 - `npm run lint:css` — запуск Stylelint
 
 ## Потрогать в интернете
 
-[Netlify](https://messenger-aiilui93.netlify.app/)
+* [Netlify](https://messenger-aiilui93.netlify.app/)
+* [Render](https://messenger-test-yt6x.onrender.com/)
 
 ## Список страниц
 

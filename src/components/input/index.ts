@@ -46,7 +46,6 @@ class InputBase extends Block {
                 const input: HTMLInputElement = document.querySelector(`input[name="${this.props.name}"]`) as HTMLInputElement;
                 if (input) {
                     const label: any = input.labels;
-                    console.log(label);
                     label[0].innerText = file.files[0].name;
                 }
             }
